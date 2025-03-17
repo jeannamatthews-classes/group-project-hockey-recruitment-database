@@ -1,1 +1,3 @@
-
+Date        Time    Description
+03/15/2025  30m     Checked over design doc
+03/16/2025  15m     Added to GitHub
