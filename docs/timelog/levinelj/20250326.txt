@@ -1,0 +1,4 @@
+Date		Time	Description
+03/25/2025	1h		Worked on setting up Django and making build/run instrucitons (PR#1 on repo)
+03/26/2025	15m		Writting my missing time log for before 03/11
+03/26/2025	15m		Writting this time log
