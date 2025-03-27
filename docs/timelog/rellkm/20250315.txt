@@ -1,4 +1,0 @@
-03/11/2025, 25 min, work on ER diagram
-03/12/2025, 15min, work on relational schema
-03/13/2025, 45min, finish ER diagram & relational schema and work on design doc write-up. 
-03/15/2025, 15min, work on github repository subdirectories/timelog files
