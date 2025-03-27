@@ -2,6 +2,9 @@
 
 description TODO
 
+# Docker
+Docker support is in progress. I currently have a basic dockerfile that _should_ be working, but I'm having port forwarding issues. I think it's specificaly a mac problem, but I haven't tested on another device yet. Docker should make managing dependencies and whatnot easier by containerizing the app.
+
 # Running
 - Instructions for Linux/macOS users
 ### Create virtual environment
