@@ -1,5 +1,17 @@
-build:
-	docker build -t hockey-db .
+# (Re-)build and run the current stack
+build-dev:
+	echo "Building and running development stack"
+	docker compose -f docker-compose.dev.yaml up --build
 
-run:
-	docker run -p 8000:8000 hockey-db
+# Run the current stack without rebuilding, using the last built version
+run-dev:
+	echo "Building and running development stack"
+	docker compose -f docker-compose.dev.yaml up
+
+# (Re-)build and run a production-ready stack
+build-prod:
+	echo "Not implemented yet!"
+
+# Run the production-ready stack without rebuilding, using the last built version
+build-prod:
+	echo "Not implemented yet!"
