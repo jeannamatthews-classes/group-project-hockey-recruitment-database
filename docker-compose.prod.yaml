@@ -1,0 +1,26 @@
+name: hockeydb-prod
+services:
+  django:
+    container_name: hockeydb-django
+    build: ./django
+    environment:
+      HOCKEYDB_BUILD_MODE: "PROD"
+    expose:
+      - 8000
+    networks:
+      - hockeydb
+
+  nginx:
+    container_name: hockeydb-nginx
+    build: 
+      context: ./
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - django
+    networks:
+      - hockeydb
+
+networks:
+  hockeydb:

@@ -3,28 +3,17 @@
 description TODO
 
 # Docker
-Docker will create a container, install dependencies, and run the server automatically. You can make a new docker image with `make build` and then run it with `make run`. This currently just uses a Dockerfile and a Makefile, but down the road a docker-compose will likely be necessary for mysql.
-
-# Running
-- Instructions for Linux/macOS users
-### Create virtual environment
-start with the root of the repository as your working directory
-```commandline
-python3 -m venv venv
-source venv/bin/activate
-pip install -r src/requirements.txt
-```
-
-### Set up local database
-if you are using the default sqlite3 database, you can set it up with
-```commandline
-python3 src/manage.py migrate
-```
-The data will be stored in the db.sqlite3 file
-
-### Run the server
-With the virtual environment activated:
-```commandline
-python3 src/manage.py runserver
-```
-This should start the server on localhost, which you can visit with the link it prints out
+The building and running process is handled by docker with a makefile. By default, docker will build the development stack from scratch whenever you run `make`.
+## Development Mode Commands
+- `make` or `make build-dev`:
+Build and run the development environment. This just builds the django image and exposes it at port 8000 on your computer. Django will use the SQLite backend, and some default (insecure) settings to make development easier.
+- `make run-dev`:
+Same as above, but may not rebuild the image. Good for if building takes a while on your computer and you haven't made any changes.
+## Production Mode Commands
+- `make build-prod`:
+Build and run the production environment. This currently builds the django and an nginx image, and exposes them at port 80 on your computer. Nginx will serve `/static` and `/media` like a produciton environment. This disables django's debugging features, and generaly shouldn't be used unless you're deploying testing production-only features. The production environment is not fully complete, and currently lacks a MySQL server instance, instead relying on the SQLite backend. Pay careful attention to the docker logs, as a proper production setup requires environment variables to be set in docker-compose.prod.yaml.
+- `make run-prod`:
+Same as above, but may not rebuild the image. Good for if building takes a while on your computer and you haven't made any changes.
+## Utilities
+- `make clean`:
+Deletes all built container images. It is necessary to run this when you're switching between development and production environments, otherwise you will get an error from docker. 

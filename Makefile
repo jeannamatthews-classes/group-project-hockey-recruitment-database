@@ -5,13 +5,20 @@ build-dev:
 
 # Run the current stack without rebuilding, using the last built version
 run-dev:
-	echo "Building and running development stack"
+	echo "Running development stack"
 	docker compose -f docker-compose.dev.yaml up
 
 # (Re-)build and run a production-ready stack
 build-prod:
-	echo "Not implemented yet!"
+	echo "Building and running production stack"
+	docker compose -f docker-compose.prod.yaml up --build
 
 # Run the production-ready stack without rebuilding, using the last built version
-build-prod:
-	echo "Not implemented yet!"
+run-prod:
+	echo "Running production stack"
+	docker compose -f docker-compose.dev.yaml up
+
+# Remove existing containers
+clean:
+	docker compose -f docker-compose.dev.yaml rm -f
+	docker compose -f docker-compose.prod.yaml rm -f

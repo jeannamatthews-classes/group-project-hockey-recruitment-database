@@ -3,20 +3,10 @@ services:
   django:
     container_name: hockeydb-django
     build: ./django
-    expose:
-      - 8000
-    networks:
-      - hockeydb
-
-  nginx:
-    container_name: hockeydb-nginx
-    build: 
-      context: ./
-      dockerfile: ./nginx/Dockerfile
+    environment:
+      HOCKEYDB_BUILD_MODE: "DEV"
     ports:
-      - 80:80
-    depends_on:
-      - django
+      - 8000:8000
     networks:
       - hockeydb
 
