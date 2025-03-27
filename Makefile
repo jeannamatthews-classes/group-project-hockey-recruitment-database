@@ -1,5 +1,5 @@
 build:
 	docker build -t hockey-db .
 
-run: build
-	docker run -P hockey-db
+run:
+	docker run -p 8000:8000 hockey-db

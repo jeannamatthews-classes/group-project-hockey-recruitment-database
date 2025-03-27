@@ -3,7 +3,7 @@
 description TODO
 
 # Docker
-Docker support is in progress. I currently have a basic dockerfile that _should_ be working, but I'm having port forwarding issues. I think it's specificaly a mac problem, but I haven't tested on another device yet. Docker should make managing dependencies and whatnot easier by containerizing the app.
+Docker will create a container, install dependencies, and run the server automatically. You can make a new docker image with `make build` and then run it with `make run`. This currently just uses a Dockerfile and a Makefile, but down the road a docker-compose will likely be necessary for mysql.
 
 # Running
 - Instructions for Linux/macOS users
