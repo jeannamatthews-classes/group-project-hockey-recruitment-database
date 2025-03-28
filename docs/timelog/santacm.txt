@@ -1,3 +1,5 @@
+TIMELOG
+
 I am assuming that I am not to include the time spent on individual assignments or anything of that sort. Moving forward, I will have a good system of keeping track of 
 my time spent per task, but for now this will be a rough estimate without exact dates. First, I was the one that submitted the registration for RAPS. 
 Although this could have been quicker if I just copied the very short description we had of the project for the abstract, I decided to actually write something 
@@ -11,4 +13,14 @@ and format, I did not contribute to it. We ended up not meeting on Thursday the 
 did it on their own time and left it to other group members to review. I did not find any flaws so I didn't add anything. That was it up to 3/11/2025 for the group 
 project.
 
-Total time: 2 hours and 30/45 minutes
+Total time: 2 hours and 45 minutes
+
+I didn't really do much at all for the design document, my teammates did a great job. Some of them had a lot more knowledge of what it would look like, and since we 
+didn't meet, I wasn't able to give much feedback. I will be putting more work over the time of the project, just these beginning tasks were a little harder for me 
+to get involved. However, I was still very active in our groupchat.
+
+DATE        TIME        TASKS
+3/13        30 minutes  Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
+3/14        60 minutes  Created all of the necessary directories and files for the assignment. Finished my part of the homework.
+3/27        75 minutes  Group meeting where we updated the GANTT chart and figured out how to get some meaningful progress done.
+3/28        30 minutes  Finished all necessary adjustments before Friday 3/28 5 PM deadline
