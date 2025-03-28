@@ -1,3 +1,0 @@
-Date        Time    Description
-03/26/2025  2hrs    Researching docker and the django REST framework
-03/26/2025  1hr  Implementing basic dockerfile on dockerize branch

@@ -1,0 +1,11 @@
+Date        Time    Description
+02/25/25    30min   Added files to warmup assignment
+02/26/25    10min   Approved group member's PR for warmup assignment
+02/27/25    45min   Worked with group to make gantt chart/ initial plan
+03/03/25    30min   Worked independetly to add to gantt chart/initial plan
+03/06/25    30min   Made notes independently for design document
+03/13/2025  1hr     Contributed to design document
+03/16/2025  30min   Recorded major time contirbutions taking place before 3/16
+03/26/2025  2hrs    Researching docker and the django REST framework
+03/26/2025  1hr     Implementing basic dockerfile on dockerize branch
+03/27/2025  4hr     Create docker compose, separate dev and prod environments, and custom python class for loading different configurations in dev and prod
