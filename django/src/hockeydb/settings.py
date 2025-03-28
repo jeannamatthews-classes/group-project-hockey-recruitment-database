@@ -11,22 +11,44 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from hockeydb.build_mode import BuildMode
+from os import environ
+from warnings import warn
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
+# These options have been improved from the defaults, and should be more suitable for production.
+# However, it is still necessary to modify some of the values, as they are insecure.
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wn@pg9nu2uw6car=7ht!5l+2cz6%xk)(sp7+*ve2+m=86q0_8e'
+INSECURE_KEY = 'django-insecure-wn@pg9nu2uw6car=7ht!5l+2cz6%xk)(sp7+*ve2+m=86q0_8e'
+SECRET_KEY_VAR = 'HOCKEYDB_SECRET_KEY'
+if BuildMode.mode() == BuildMode.DEV:
+    SECRET_KEY = INSECURE_KEY
+else:
+    try:
+        SECRET_KEY = environ[SECRET_KEY_VAR]
+    except KeyError:
+        warn(f"\033[5;31mProduction mode is enabled but {SECRET_KEY_VAR} is not set, using insecure default. This is not safe for production!\033[0m")
+        SECRET_KEY = INSECURE_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = BuildMode.is_dev()
 
-ALLOWED_HOSTS = []
-
+# In development mode, when DEBUG = True, django chooses a safe development default.
+# In production mode, this must be set via environment variable to the DNS name the server will be accessible at.
+# In production, nginx is set to forward the host properly using the `Host` header
+ALLOWED_HOSTS_VAR = "HOCKEYDB_ALLOWED_HOSTS"
+if BuildMode.mode() == BuildMode.DEV:
+    ALLOWED_HOSTS = []
+else:
+    try:
+        ALLOWED_HOSTS = environ[ALLOWED_HOSTS_VAR].split(",")
+    except KeyError:
+        warn(f"\033[5;31mProduction mode is enabled but {ALLOWED_HOSTS_VAR} is not set, using unsafe default. This is not safe for production!\033[0m")
+        ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
@@ -72,6 +94,7 @@ WSGI_APPLICATION = 'hockeydb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# TODO: Add MySQL config for production
 
 DATABASES = {
     'default': {
