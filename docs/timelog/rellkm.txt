@@ -8,3 +8,7 @@ TIMELOG:
 03/13/2025, 45min, finish ER diagram & relational schema and work on design doc write-up. 
 03/15/2025, 15min, work on github repository subdirectories/timelog files
 03/26/2025, 15min, work on GitHub repository
+04/01/2025, 30min, learning how to set up Vue.js
+04/01/2025, 15min, changing the structure of the src directory
+04/01/2025, 20min, setting up Vue.js basis in frontend/ directory
+04/01/2025, 15 min, making plan for next steps with frontend team
