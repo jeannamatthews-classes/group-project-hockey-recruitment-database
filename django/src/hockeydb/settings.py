@@ -91,18 +91,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hockeydb.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-# TODO: Add MySQL config for production
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DB_NAME_VAR = 'HOCKEYDB_DB_NAME'
+DB_USER_VAR = 'HOCKEYDB_DB_USERNAME'
+DB_PASS_VAR = 'HOCKEYDB_DB_PASSWORD'
+if BuildMode.mode() == BuildMode.DEV:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
+else:
+    if DB_PASS_VAR not in environ:
+        warn(f"\033[5;31mProduction mode is enabled but {DB_PASS_VAR} is not set. Unless you are doing something insecure, database will fail to connect!\033[0m")    
+    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'hockeydb-mysql',
+            'NAME': ('hockeydb' if not DB_NAME_VAR in environ else environ[DB_NAME_VAR]),   # If DB_NAME_VAR is set, use that else use 'hockeydb'
+            'USER': ('hockeydb' if not DB_USER_VAR in environ else environ[DB_USER_VAR]),
+            'PASSWORD': ('' if not DB_PASS_VAR in environ else environ[DB_PASS_VAR]),
+            'PORT': '3306'                                                                  # Default port  
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -137,8 +151,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+#TODO: Fix serving of static assets
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
