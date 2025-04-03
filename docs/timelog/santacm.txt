@@ -37,3 +37,4 @@ DATE        TIME        TASKS
                         I will be following that. I ended up finishing the HTML and watched the whole video about CSS, but now there are a couple of videos about actually 
                         putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
                         both of us have a better understanding of Vue.
+4/3         15 minutes  Writing the narrative for this week and the gantt chart to the github repository.
