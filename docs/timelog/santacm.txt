@@ -29,3 +29,11 @@ DATE        TIME        TASKS
                         restructure branch in order to not mess up the Django bootstrapping on accident. We also agreed on spending time learning Vue so we know exactly 
                         where to include what files and how the files are structured when using Vue. We also agreed that we have to move forward fast at this point in time.
 4/3         15 minutes  Updating timelog 
+4/3         60 minutes  Started watching the video: https://www.youtube.com/watch?v=VeNfHj6MhgA so I can learn Vue, but there are some prerequesites that I needed to work on
+                        before that, so I decided to start recapping HTML and CSS, learning JavaScript, Events and DOM Manipulation, Fetch API and Basic HTTP, Arrow functions, 
+                        and NPM so I can actually understand Vue. I started with the YouTube series https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8BoXcpCUvdmdPZFuR5y2lV,
+                        where I have around 10 minutes left to watch and then will hop into a CSS overview and keep going.
+4/3         75 minutes  The following playlist: https://youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a&si=64eJ7XSbJylrpW1t includes CSS and JavaScript as well so
+                        I will be following that. I ended up finishing the HTML and watched the whole video about CSS, but now there are a couple of videos about actually 
+                        putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
+                        both of us have a better understanding of Vue.
