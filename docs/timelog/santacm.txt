@@ -23,4 +23,9 @@ DATE        TIME        TASKS
 3/13        30 minutes  Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
 3/14        60 minutes  Created all of the necessary directories and files for the assignment. Finished my part of the homework.
 3/27        75 minutes  Group meeting where we updated the GANTT chart and figured out how to get some meaningful progress done.
-3/28        30 minutes  Finished all necessary adjustments before Friday 3/28 5 PM deadline
+3/28        30 minutes  Finished all necessary adjustments before Friday 3/28 5 PM deadline.
+3/31        30 minutes  Spent time checking everything else that needs to be done and figuring out exactly where we are in our progress and adding a narrative about it.
+4/1         75 minutes  Met with the frontend group. We spent the bulk of our time figuring out how to include Vue in our project, and were then able to add it to a 
+                        restructure branch in order to not mess up the Django bootstrapping on accident. We also agreed on spending time learning Vue so we know exactly 
+                        where to include what files and how the files are structured when using Vue. We also agreed that we have to move forward fast at this point in time.
+4/3         15 minutes  Updating timelog 
