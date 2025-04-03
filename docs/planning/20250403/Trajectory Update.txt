@@ -1,0 +1,7 @@
+I don't think there has been significant changes since the last trajectory update. As part of the frontend, we have been meeting
+and advancing. We have mostly still been learning about Vue, so we can advance quicker once we have a better understanding, and 
+we realize that we need to meet frequently and learn fast (putting in extra work) in this upcoming week, considering that RAPS 
+is coming. As for the backend, I believe things are somewhat on pace since they wanted to keep the Gantt Chart pretty much the same, 
+but I'm not 100% sure where they stand. Once they finish the backend, they'll be joining the frontend to try and speed up the process
+so I think we will be fine in the long run. The goal right now is getting as much as possible ready for RAPS so we have something nice
+to present. 
