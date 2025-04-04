@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hockeydb.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/get/player', get_player_by_id, name='get_player'),
+    path('api/get/team', get_team_by_id, name='get_team'),
 ]
