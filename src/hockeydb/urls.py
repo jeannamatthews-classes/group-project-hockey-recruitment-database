@@ -16,10 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hockeydb import views
 from hockeydb.views import *
 
 urlpatterns = [
+    path('', views.home, name='home'), #homepage
     path('admin/', admin.site.urls),
-    path('api/get/player', get_player_by_id, name='get_player'),
-    path('api/get/team', get_team_by_id, name='get_team'),
+    path('api/get/player_id', get_player_by_id, name='get_player'), #returns a json object representing a player
+    path('api/get/team', get_team_by_id, name='get_team'), #returns a json object representing a team
+    path('api/search/team', search_team_by_query, name ='teams_list'),
+    path('api/search/player_fname', views.search_player_by_first_name, name='players_list'), #returns a list of players matching first name query
+    path('api/search/player_lname', views.search_player_by_last_name, name='players_list'), #returns a list of players matching last name query
+    path('players/<int:player_id>/update', views.update_player, name='update_player')
 ]
+
+
