@@ -7,6 +7,10 @@ services:
       HOCKEYDB_BUILD_MODE: "DEV"
     ports:
       - 8000:8000
+    volumes:
+      - type: bind
+        source: ./data/db.sqlite3
+        target: /db.sqlite3
     networks:
       - hockeydb
 

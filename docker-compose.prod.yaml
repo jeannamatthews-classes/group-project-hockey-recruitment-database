@@ -4,11 +4,15 @@ services:
     container_name: hockeydb-django
     build: ./django
     environment:
+      HOCKEYDB_SECRET_KEY: "django-insecure-wn@pg9nu2uw6car=7ht!5l+2cz6%xk)(sp7+*ve2+m=86q0_8e" # Don't use this in production
+      HOCKEYDB_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]" # You probably shouldn't use this in production
       HOCKEYDB_BUILD_MODE: "PROD"
       HOCKEYDB_DB_USERNAME: "hockeydb"   # Don't use this in production!
       HOCKEYDB_DB_PASSWORD: "insecure!"  # Don't use this in production!
     expose:
       - 8000
+    volumes:
+      - ./data/static:/static
     depends_on:
       - mysql
     networks:
@@ -21,6 +25,8 @@ services:
       dockerfile: ./nginx/Dockerfile
     ports:
       - 80:80
+    volumes:
+      - ./data/static:/srv/static
     depends_on:
       - django
     networks:

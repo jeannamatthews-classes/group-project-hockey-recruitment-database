@@ -13,4 +13,9 @@ fi
 python3 manage.py makemigrations
 python3 manage.py migrate  
 
-python3 manage.py runserver 0.0.0.0:8000
+# Collect static files into the volume
+python3 manage.py collectstatic --noinput 
+
+# Run the server, passing signals down so that the container dies properly
+python3 manage.py runserver 0.0.0.0:8000 & pid=$!
+wait $pid
