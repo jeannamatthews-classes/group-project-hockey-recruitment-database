@@ -2,7 +2,7 @@ name: hockeydb-dev
 services:
   django:
     container_name: hockeydb-django
-    build: ./django
+    build: django-app
     environment:
       HOCKEYDB_BUILD_MODE: "DEV"
     ports:

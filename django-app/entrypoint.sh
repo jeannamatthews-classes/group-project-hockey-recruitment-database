@@ -9,8 +9,7 @@ if [ "$HOCKEYDB_BUILD_MODE" = "PROD" ]; then
     done
 fi
 
-# Apply database schema. I don't know if this breaks anything, so if data is disapearing between restarts, it's probably this
-python3 manage.py makemigrations
+# Check for any unapplied migrations and ensure the database schema is up to date
 python3 manage.py migrate  
 
 # Collect static files into the volume
