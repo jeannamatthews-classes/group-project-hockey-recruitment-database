@@ -1,0 +1,16 @@
+name: hockeydb-dev
+services:
+  django:
+    container_name: hockeydb-django
+    build: ./django
+    environment:
+      HOCKEYDB_BUILD_MODE: "DEV"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data/db.sqlite3:/db.sqlite3
+    networks:
+      - hockeydb
+
+networks:
+  hockeydb:

@@ -2,26 +2,28 @@
 
 description TODO
 
-# Running
-- Instructions for Linux/macOS users
-### Create virtual environment
-start with the root of the repository as your working directory
-```commandline
-python3 -m venv venv
-source venv/bin/activate
-pip install -r src/requirements.txt
-```
-
-### Set up local database
-if you are using the default sqlite3 database, you can set it up with
-```commandline
-python3 src/manage.py migrate
-```
-The data will be stored in the db.sqlite3 file
-
-### Run the server
-With the virtual environment activated:
-```commandline
-python3 src/manage.py runserver
-```
-This should start the server on localhost, which you can visit with the link it prints out
+# Docker
+The building and running process is handled by docker with a makefile. By default, docker will build the development stack from scratch whenever you run `make`.
+## Development Mode Commands
+- `make` or `make dev`:
+Build and run the development environment. This just builds the django image and exposes it at port 8000 on your computer. Django will use the SQLite backend, and some default (insecure) settings to make development easier.
+## Production Mode Commands
+- `make prod`:
+Build and run the production environment. This currently builds the django and an nginx image, and exposes them at port 80 on your computer. Nginx will serve `/static` like a production environment. This disables django's debugging features, and generally shouldn't be used unless you're deploying testing production-only features. Pay careful attention to the docker logs, as a proper production setup requires environment variables to be set in docker-compose.prod.yaml.
+## Cleanup
+- `make clean`:
+Delete all saved data and containers. This is highly destructive and irreversible.
+- `make clean-containers`:
+Delete all saved containers.
+- `make clean-data`:
+Delete saved data volumes. This is destructive and irreversible.
+## Shells
+- `make sh-django`:
+Opens a shell into the django container. The container must already be running for this to work.
+- `make sh-mysql`:
+Opens a shell into the mysql container. The container must already be running for this to work.
+- `make sh-nginx`:
+Opens a shell into the nginx container. The container must already be running for this to work.
+## Miscellaneous Utilities
+- `make su-django`:
+Create a django superuser. Effectively runs `python3 manage.py createsuperuser` inside the django container. The container must already be running for this to work. Because django users are stored in the database, this does not carry across development/ production environments or database wipes.
