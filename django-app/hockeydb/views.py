@@ -1,7 +1,6 @@
 from hockeydb.models import *
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
-from django.views.decorators.http import require_http_methods
 import logging
 
 logger = logging.getLogger(__name__)

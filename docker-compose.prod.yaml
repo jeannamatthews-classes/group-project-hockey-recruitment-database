@@ -2,7 +2,7 @@ name: hockeydb-prod
 services:
   django:
     container_name: hockeydb-django
-    build: django-app
+    build: ./django-app
     environment:
       HOCKEYDB_SECRET_KEY: "django-insecure-wn@pg9nu2uw6car=7ht!5l+2cz6%xk)(sp7+*ve2+m=86q0_8e" # Don't use this in production
       HOCKEYDB_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]" # You probably shouldn't use this in production
