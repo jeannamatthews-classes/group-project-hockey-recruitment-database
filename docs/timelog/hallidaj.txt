@@ -10,3 +10,5 @@ Date        Time    Description
 03/26/2025  1hr     Implementing basic dockerfile on dockerize branch
 03/27/2025  4hr     Create docker compose, separate dev and prod environments, and custom python class for loading different configurations in dev and prod
 04/03/2025  3hr     Continued work on dockerization, set up MySQL stack.
+04/07/2025  1hr     Worked on RAPS presentation
+04/07/2025  3hr     Finished initial dockerization
