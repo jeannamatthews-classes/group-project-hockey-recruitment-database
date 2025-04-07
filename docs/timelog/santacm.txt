@@ -1,0 +1,40 @@
+TIMELOG
+
+I am assuming that I am not to include the time spent on individual assignments or anything of that sort. Moving forward, I will have a good system of keeping track of 
+my time spent per task, but for now this will be a rough estimate without exact dates. First, I was the one that submitted the registration for RAPS. 
+Although this could have been quicker if I just copied the very short description we had of the project for the abstract, I decided to actually write something 
+meaningful and somewhat close to the 350 word mark. I ended up spending around 45 minutes or a little less on this assignment. In terms of the GANTT chart and 
+Identification of Key Risks Completion requirements document, we all worked on this together during class. I was the one that created the repository and the 
+Gantt Chart, as we are using it on GitHub. We weren't able to fully finish that document in the 1 hour and 15 minute timeline, so some group members formatted 
+everything correctly at the end. In terms of that formatting the only thing I did was add the explanation of why out Gantt chart was not very well developed. 
+The warm-up group assignment on GitHub likely took me around half an hour at first, and some extra time checking that everyone did their part (although we still
+lost some points anyway). I'm not sure if the Gantt Chart Forum counts for this so I will not be including it. In terms of proposing the design document contents 
+and format, I did not contribute to it. We ended up not meeting on Thursday the 6th, so other group members that worked on the user requirements of this project
+did it on their own time and left it to other group members to review. I did not find any flaws so I didn't add anything. That was it up to 3/11/2025 for the group 
+project.
+
+Total time: 2 hours and 45 minutes
+
+I didn't really do much at all for the design document, my teammates did a great job. Some of them had a lot more knowledge of what it would look like, and since we 
+didn't meet, I wasn't able to give much feedback. I will be putting more work over the time of the project, just these beginning tasks were a little harder for me 
+to get involved. However, I was still very active in our groupchat.
+
+DATE        TIME        TASKS
+3/13        30 minutes  Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
+3/14        60 minutes  Created all of the necessary directories and files for the assignment. Finished my part of the homework.
+3/27        75 minutes  Group meeting where we updated the GANTT chart and figured out how to get some meaningful progress done.
+3/28        30 minutes  Finished all necessary adjustments before Friday 3/28 5 PM deadline.
+3/31        30 minutes  Spent time checking everything else that needs to be done and figuring out exactly where we are in our progress and adding a narrative about it.
+4/1         75 minutes  Met with the frontend group. We spent the bulk of our time figuring out how to include Vue in our project, and were then able to add it to a 
+                        restructure branch in order to not mess up the Django bootstrapping on accident. We also agreed on spending time learning Vue so we know exactly 
+                        where to include what files and how the files are structured when using Vue. We also agreed that we have to move forward fast at this point in time.
+4/3         15 minutes  Updating timelog 
+4/3         60 minutes  Started watching the video: https://www.youtube.com/watch?v=VeNfHj6MhgA so I can learn Vue, but there are some prerequesites that I needed to work on
+                        before that, so I decided to start recapping HTML and CSS, learning JavaScript, Events and DOM Manipulation, Fetch API and Basic HTTP, Arrow functions, 
+                        and NPM so I can actually understand Vue. I started with the YouTube series https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8BoXcpCUvdmdPZFuR5y2lV,
+                        where I have around 10 minutes left to watch and then will hop into a CSS overview and keep going.
+4/3         75 minutes  The following playlist: https://youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a&si=64eJ7XSbJylrpW1t includes CSS and JavaScript as well so
+                        I will be following that. I ended up finishing the HTML and watched the whole video about CSS, but now there are a couple of videos about actually 
+                        putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
+                        both of us have a better understanding of Vue.
+4/3         15 minutes  Writing the narrative for this week and the gantt chart to the github repository.

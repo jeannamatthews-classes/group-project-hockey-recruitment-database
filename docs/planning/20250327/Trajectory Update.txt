@@ -1,0 +1,4 @@
+We would say that the project timeline is slipping unfortunately. There has been some progress on the backend, but the frontend still 
+hasn’t progressed. The frontend team is planning on meeting tomorrow to make some progress, and we plan on stepping up the progress a 
+lot moving forward. We are hoping that with a lot of hard work we will be able to still achieve more than the MVP, but right now the 
+goal is to get to the offline functionality portion as soon as possible so we can cross out that key risk.

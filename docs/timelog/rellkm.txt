@@ -1,0 +1,14 @@
+TIMELOG: 
+
+02/19/2025, 5min, Accepted warm up group github assignment
+02/26/2025, 60min, Completed warm-up group github assignment
+03/03/2025, 120min, worked on GANTT chart & identified of key risks
+03/11/2025, 25 min, work on ER diagram
+03/12/2025, 15min, work on relational schema
+03/13/2025, 45min, finish ER diagram & relational schema and work on design doc write-up. 
+03/15/2025, 15min, work on github repository subdirectories/timelog files
+03/26/2025, 15min, work on GitHub repository
+04/01/2025, 30min, learn how to set up Vue.js
+04/01/2025, 15min, restructure src directory (separate backend and frontend)
+04/01/2025, 20min, setting up Vue.js app basis in frontend/
+04/01/2025, 15min, making a plan for next steps with frontend team

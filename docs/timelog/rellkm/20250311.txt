@@ -1,5 +1,0 @@
-Format: DATE, TIME (minutes), DESCRIPTION OF TASKS
-
-02/19/2025, 5min, Accepted warm up group github assignment
-02/26/2025, 60min, Completed warm-up group github assignment
-03/03/2025, 120min, worked on GANTT chart & identified of key risks

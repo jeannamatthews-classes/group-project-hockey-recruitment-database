@@ -1,6 +1,0 @@
-Date        Time    Description
-02/25/25    30min   Added files to warmup assignment
-02/26/25    10min   Approved group member's PR for warmup assignment
-02/27/25    45min   Worked with group to make gantt chart/ initial plan
-03/03/25    30min   Worked independetly to add to gantt chart/initial plan
-03/06/25    30min   Made notes independently for design document

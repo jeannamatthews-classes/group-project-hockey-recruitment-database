@@ -1,9 +1,0 @@
-I didn't really do much at all for the design document, my teammates did a great job. Some of them had a lot more knowledge of what it would look like, and since we 
-didn't meet, I wasn't able to give much feedback. I will be putting more work over the time of the project, just these beginning tasks were a little harder for me 
-to get involved. However, I was still very active in our groupchat.
-
-    DATE        TIME        TASKS
-    3/13        20 minutes  Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
-    3/14        1 hour      Created all of the necessary directories and files for the assignment. Finished my part of the homework.
-
-Total: 1 hour and 20 minutes
