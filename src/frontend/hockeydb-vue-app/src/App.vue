@@ -1,85 +1,150 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <div id="app">
+    <header>
+      <div class="header-content">
+        <img src="@/assets/logo.png" alt="Clarkson Hockey Logo" class="logo" />
+        <div class="header-text">
+          <h1>Women's Hockey Recruitment Database</h1>
+        </div>
+      </div>
+      <div class="divider"></div>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <h2>
+          <router-link router-link to="/players">Players</router-link>
+          <router-link to="/games">Games</router-link>
+        </h2>
       </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header>
+    <main> 
+      <router-view /> <!-- Content for each page will be rendered here -->
+    </main>
+  </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  name: 'App',
+};
+</script>
+
+<!-- color: #fff;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 3.2px;
+  line-height: 24px;
+  text-align: left;
+  text-transform: uppercase; -->
+
+<style>
+#app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #cfd0d1;
+}
+
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  background-color: #004e42;
+  width: 100%;
+  color: #fff;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure the header is above other content */
+  box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensure the content spans the full width */
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  width: 150px;
+  height: 50px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+.header-text {
+  flex: 1; /* Allow the header text to take up remaining space */
+  text-align: left; /* Align the text to the left */
+}
+
+.divider {
+  width: 100%;
+  height: 1.5px;
+  background-color: #ffcd00;
+  margin: 10px 0; /* Add some space above and below the divider */
+}
+
+h1 {
+  margin: 10px; /* Remove any default margin */
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 3.04px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .8rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 3.04px;
+  line-height: 24px;
+  text-align: left;
+  text-transform: uppercase;
+  flex-direction: row;
+  margin: 0;
+}
+
+main {
+  margin-top: 140px; /* Push the content below the fixed header */
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+  display: flex;
+  justify-content: center;
 }
 
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  color: white;
+  margin: 0 100px;
+  text-decoration: none;
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a:hover {
+  text-decoration: underline;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+/* Reset body and html styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
 </style>
