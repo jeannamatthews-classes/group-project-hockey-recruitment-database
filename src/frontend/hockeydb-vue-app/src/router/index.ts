@@ -23,8 +23,8 @@ const router = createRouter({
       component: PlayersView,
     },
     {
-      path: '/teams',
-      name: 'teams',
+      path: '/team-info',
+      name: 'team-info',
       component: TeamsView,
     },
     {
