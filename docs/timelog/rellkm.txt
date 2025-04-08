@@ -10,5 +10,8 @@ TIMELOG:
 03/26/2025, 15min, work on GitHub repository
 04/01/2025, 30min, learn how to set up Vue.js
 04/01/2025, 15min, restructure src directory (separate backend and frontend)
-04/01/2025, 20min, setting up Vue.js app basis in frontend/
-04/01/2025, 15min, making a plan for next steps with frontend team
+04/01/2025, 20min, setting up Vue.js app basis in frontend/ (restructure branch)
+04/01/2025, 15min, making a plan for the next steps with frontend team
+04/06/2025, 30min, learning the purpose of each component of the vue app (restructure branch)
+04/06/2025, 30min, trying to figure out how to clean out unnecessary files from vue app (restructure branch)
+04/06/2025, 15min, designing and divvying up pages of UI between frontend team 
