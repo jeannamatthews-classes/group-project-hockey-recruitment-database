@@ -12,6 +12,13 @@ TIMELOG:
 04/01/2025, 15min, restructure src directory (separate backend and frontend)
 04/01/2025, 20min, setting up Vue.js app basis in frontend/ (restructure branch)
 04/01/2025, 15min, making a plan for the next steps with frontend team
-04/06/2025, 30min, learning the purpose of each component of the vue app (restructure branch)
-04/06/2025, 30min, trying to figure out how to clean out unnecessary files from vue app (restructure branch)
-04/06/2025, 15min, designing and divvying up pages of UI between frontend team 
+04/03/2025, 30min, learning the purpose of each component of the vue app (restructure branch)
+04/03/2025, 30min, trying to figure out how to clean out unnecessary files from vue app (restructure branch)
+04/03/2025, 15min, designing and divvying up pages of UI between frontend team 
+04/06/2025, 45min, strip unnecessary files from vue app (restructure branch)
+04/06/2025, 45min, create basic header for app in App.Vue (restructure branch)
+04/06/2025, 30min, style header after Clarkson athletic page in App.Vue (restructure branch)
+04/06/2025, 75min, create games view with example data in game-view.vue (restructure branch)
+04/06/2025, 15min, style game view
+04/07/2025, 30min, create and style players view in players-view.vue (restructure branch)
+04/07/2025, 60min, meet with frontend team to talk about plan and divvy up new pages
