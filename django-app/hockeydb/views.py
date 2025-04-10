@@ -1,6 +1,8 @@
 from hockeydb.models import *
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
+from django.views.decorators.csrf import csrf_exempt
+import json
 import logging
 
 logger = logging.getLogger(__name__)
@@ -35,6 +37,8 @@ def get_team_by_id(request):
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method or missing team ID."})
 
+def get_note_by_id(request):
+    pass
 
 def search_player_by_name(request):
     if request.method == "GET":
@@ -67,10 +71,10 @@ def search_player_by_name(request):
 def search_team_by_query(request):
     if request.method == "GET":
 
-        search_query = request.GET.get('name')  
+        search_query = request.GET.get('query')  
         
         if not search_query:
-            return JsonResponse({"status": "error", "message": "Missing 'name' parameter"}, status=400)
+            return JsonResponse({"status": "error", "message": "Missing 'query' parameter"}, status=400)
             
         teams = Team.objects.filter(name__icontains=search_query)
         
@@ -84,29 +88,80 @@ def search_team_by_query(request):
     
     return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
-def update_player(request, player_id):
+def search_note_by_query(request):
+    if request.method == "GET":
+
+        search_query = request.GET.get('query')  
+        
+        if not search_query:
+            return JsonResponse({"status": "error", "message": "Missing 'query' parameter"}, status=400)
+            
+        notes = Note.objects.filter(content__icontains=search_query)
+        
+
+        data = [model_to_dict(note) for note in notes]
+        
+        if not data:
+            return JsonResponse({"status": "success", "message": "No notes found", "data": []})
+            
+        return JsonResponse({"status": "success", "data": data})
+    
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def update_player(request):
     if request.method != 'POST':
         return JsonResponse({"error": "Method not allowed"})
+    body = json.loads(request.body)
+
     try:
-        player = Player.objects.get(id = player_id)
-
+        player_id = body["id"]
+    except KeyError:
+        return JsonResponse({"status":"error","message":"Missing 'id' parameter"},status=400)
+    try:
+        player = Player.objects.get(id=player_id)
     except Player.DoesNotExist:
-        return JsonResponse({"error": "Player not found"})
-    
-    fields_to_update = ['first_name', 'last_name', 'date_of_birth', 'position']
+        return JsonResponse({"status":"error","message":f"No player with id {player_id}"},status=400)
 
-    for field in fields_to_update:
-        if field in request.POST:
-            setattr(player, field, request.POST[field])
+
+    for field in ["first_name","last_name","date_of_birth","position"]:
+        try:
+            setattr(player,field,body[field])
+        except KeyError:
+            pass # Ignore fields that don't exist
+
+    return JsonResponse({"status":"success","player":dict(player)},status=200)
+
+def update_team(request):
+    pass
+
+def update_note():
+    pass
+
+@csrf_exempt
+def create_player(request):
+    if request.method != 'POST':
+        return JsonResponse({"status":"error","message":"Method not allowed"},status=400)
+
+    body = json.loads(request.body)
+
+    player = Player()
+
+    for field in ["first_name","last_name","date_of_birth","position"]:
+        try:
+            setattr(player,field,body[field])
+        except KeyError:
+            pass # Ignore fields that don't exist
+
     try:
         player.save()
-    except Exception as e:
-        return JsonResponse({"error": str(e)})
-    
-    return JsonResponse({
-        "id": player.id,
-        "first_name": player.first_name,
-        "last_name": player.last_name,
-        "date_of_birth": player.date_of_birth,
-        "position": player.position
-    })
+    except Exception as e :
+        return JsonResponse({"status":"error","message":f"Missing or invalid field, {e}"},status=400)
+
+    return JsonResponse({"status":"success","player":dict(player)},status=200)
+
+def create_team():
+    pass
+
+def create_note():
+    pass
