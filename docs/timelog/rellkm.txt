@@ -25,6 +25,7 @@ TIMELOG:
 04/10/2025, 15min, work on styling players-view.vue (restructure branch)
 04/10/2025, 15min, meeting with frontend team and working on frontend plan/ discussing pages
 04/10/2025, 15min, discussing RAPs with frontend and backend team
-04/10/2025, 30min, work on frontend portion of RAPS presentation slides
+04/10/2025, 20min, work on frontend portion of RAPS presentation slides
+04/10/2025, 10min, update GANTT chart
 04/10/2025, 15min, tweak games-view.vue and players-view.vue (restructure branch)
 04/10/2025, 30min, work on RAPs presentation slides
