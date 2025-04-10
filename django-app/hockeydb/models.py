@@ -8,6 +8,7 @@ class Player(models.Model):
     date_of_birth = models.DateField()
     position = models.CharField(max_length=100)
 
+
 class Team(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
@@ -31,6 +32,7 @@ class Game(models.Model):
     away_team_score = models.IntegerField()
     # W is a home win, L is a home loss, T is a tie, I is a canceled or otherwise incomplete game
     result = models.CharField(max_length=10, choices=[('W', 'Win'), ('L', 'Loss'), ('T', 'Tie'), ('I', 'Incomplete')])
+
 
 class Note(models.Model):
     id = models.AutoField(primary_key=True)
