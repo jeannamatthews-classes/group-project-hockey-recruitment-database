@@ -8,6 +8,15 @@
           </option>
         </select>
     </div>
+      <input
+          type="text"
+          v-model="filters.team"
+          placeholder="Search by Team"
+          class="filter-select"
+        />
+    <div>
+
+    </div>
 
     <div class="team-list">
       <div
@@ -18,7 +27,7 @@
           <h3>{{ player.name }}</h3>
           <p>Team: {{ player.team }}</p>
           <p>Position: {{ player.position }}</p>
-          <p>Age: {{ player.age }}</p>
+          <p>Grad: {{ player.grad }}</p>
         </div>
     </div>
   </template>
@@ -29,15 +38,15 @@
     data() {
       return {
         players: [
-          { name: 'Player 1', team: 'Team A', position: 'Forward', age: 18 },
-          { name: 'Player 2', team: 'Team A', position: 'Defense', age: 19 },
-          { name: 'Player 3', team: 'Team A', position: 'Goalie', age: 21 },
-          { name: 'Player 2', team: 'Team B', position: 'Defense', age: 19 },
-          { name: 'Player 1', team: 'Team B', position: 'Forward', age: 18 },
-          { name: 'Player 3', team: 'Team B', position: 'Goalie', age: 20 },
-          { name: 'Player 4', team: 'Team C', position: 'Forward', age: 21 },
-          { name: 'Player 1', team: 'Team C', position: 'Goalie', age: 20 },
-          { name: 'Player 1', team: 'Team C', position: 'Defense', age: 23 },
+          { name: 'Player 1', team: 'Team A', position: 'Forward', grad: 2025 },
+          { name: 'Player 2', team: 'Team A', position: 'Defense', grad: 2026 },
+          { name: 'Player 3', team: 'Team A', position: 'Goalie', grad: 2026 },
+          { name: 'Player 2', team: 'Team B', position: 'Defense', grad: 2025 },
+          { name: 'Player 1', team: 'Team B', position: 'Forward', grad: 2027 },
+          { name: 'Player 3', team: 'Team B', position: 'Goalie', grad: 2026 },
+          { name: 'Player 4', team: 'Team C', position: 'Forward', grad: 2026 },
+          { name: 'Player 1', team: 'Team C', position: 'Goalie', grad: 2025 },
+          { name: 'Player 1', team: 'Team C', position: 'Defense', grad: 2027 },
         ],
         teams: ['Team A', 'Team B', 'Team C'],
         positions: ['Forward', 'Defense', 'Goalie'],
@@ -45,7 +54,7 @@
           name: '',
           team: '',
           position: '',
-          age: '',
+          grad: '',
         },
       };
     },
@@ -59,10 +68,10 @@
             !this.filters.team || player.team === this.filters.team;
           const matchesPosition =
             !this.filters.position || player.position === this.filters.position;
-          const matchesAge =
-            !this.filters.age || player.age === Number(this.filters.age);
+          const matchesGrad =
+            !this.filters.grad || player.grad === Number(this.filters.grad);
 
-          return matchesName && matchesTeam && matchesPosition && matchesAge;
+          return matchesName && matchesTeam && matchesPosition && matchesGrad;
         });
       },
     },
