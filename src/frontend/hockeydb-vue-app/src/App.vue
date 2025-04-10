@@ -12,8 +12,6 @@
         <h2>
           <router-link router-link to="/players">Players</router-link>
           <router-link to="/games">Games</router-link>
-          <router-link router-link to="/player-info">Player Page</router-link>
-          <router-link to="/team-info">Team Page</router-link>
         </h2>
       </nav>
     </header>
