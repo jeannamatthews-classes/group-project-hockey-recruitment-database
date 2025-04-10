@@ -10,6 +10,7 @@ if [ "$HOCKEYDB_BUILD_MODE" = "PROD" ]; then
 fi
 
 # Check for any unapplied migrations and ensure the database schema is up to date
+python3 manage.py makemigrations hockeydb
 python3 manage.py migrate  
 
 # Collect static files into the volume

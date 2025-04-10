@@ -37,7 +37,7 @@ class Game(models.Model):
 class Note(models.Model):
     id = models.AutoField(primary_key=True)
     player = models.ForeignKey(
-        "Player",
+        Player,
         on_delete=models.CASCADE
     )
     content = models.TextField()
