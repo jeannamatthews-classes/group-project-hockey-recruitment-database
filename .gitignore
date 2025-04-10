@@ -5,3 +5,4 @@ venv
 .idea
 data
 .vscode
+django-app/hockeydb/migrations
