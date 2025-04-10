@@ -22,3 +22,9 @@ TIMELOG:
 04/06/2025, 15min, style game view
 04/07/2025, 30min, create and style players view in players-view.vue (restructure branch)
 04/07/2025, 60min, meet with frontend team to talk about plan and divvy up new pages
+04/10/2025, 15min, work on styling players-view.vue (restructure branch)
+04/10/2025, 15min, meeting with frontend team and working on frontend plan/ discussing pages
+04/10/2025, 15min, discussing RAPs with frontend and backend team
+04/10/2025, 30min, work on frontend portion of RAPS presentation slides
+04/10/2025, 15min, tweak games-view.vue and players-view.vue (restructure branch)
+04/10/2025, 30min, work on RAPs presentation slides
