@@ -21,12 +21,12 @@
 
     <div class="teams-container" v-if="selectedTeam1 && selectedTeam2">
       <div class="team">
-        <h3>{{ selectedTeam1 }}</h3>
+        <h3 style="margin-bottom: 30px">{{ selectedTeam1 }}</h3>
         <ul>
           <li v-for="player in getPlayers(selectedTeam1)" :key="player.name">
             <div>
-              <strong>{{ player.name }}</strong> &nbsp; #{{ player.number }}
-              <br>{{ player.position }} &bull; Age {{ player.age }}
+              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
+              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
             </div>
             <div>
               <label for="notes">Notes:</label>
@@ -41,12 +41,12 @@
       </div>
 
       <div class="team">
-        <h3>{{ selectedTeam2 }}</h3>
+        <h3 style="margin-bottom: 30px">{{ selectedTeam2 }}</h3>
         <ul>
           <li v-for="player in getPlayers(selectedTeam2)" :key="player.name">
             <div>
-              <strong>{{ player.name }}</strong> &nbsp; #{{ player.number }}
-              <br>{{ player.position }} &bull; Age {{ player.age }}
+              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
+              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
             </div>
             <div>
               <label for="notes">Notes:</label>
@@ -72,29 +72,29 @@ export default {
         {
           name: 'Team A',
           players: [
-            { name: 'Player 1', number: 5, position: 'Forward', age: 18, notes: 'Top scorer' },
-            { name: 'Player 2', number: 28, position: 'Defense', age: 19, notes: 'Strong defense' },
+            { name: 'Player 1', number: 5, position: 'Forward', grad: 2025, notes: 'Top scorer' },
+            { name: 'Player 2', number: 28, position: 'Defense', grad: 2026, notes: 'Strong defense' },
           ],
         },
         {
           name: 'Team B',
           players: [
-            { name: 'Player 3', number: 82, position: 'Goalie', age: 18, notes: 'Strong player'},
-            { name: 'Player 4', number: 99, position: 'Forward', age: 18, notes: 'Fast'},
+            { name: 'Player 3', number: 82, position: 'Goalie', grad: 2027, notes: 'Strong player'},
+            { name: 'Player 4', number: 99, position: 'Forward', grad: 2025, notes: 'Fast'},
           ],
         },
         {
           name: 'Team C',
           players: [
-            { name: 'Player 5', number: 13, position: 'Defense', age: 18, notes: 'Good passes' },
-            { name: 'Player 6', number: 15, position: 'Forward', age: 19, notes: 'Good shots' },
+            { name: 'Player 5', number: 13, position: 'Defense', grad: 2027, notes: 'Good passes' },
+            { name: 'Player 6', number: 15, position: 'Forward', grad: 2026, notes: 'Good shots' },
           ],
         },
         {
           name: 'Team D',
           players: [
-            { name: 'Player 7', number: 11, position: 'Forward', age: 19, notes: 'Good shots' },
-            { name: 'Player 8', number: 6, position: 'Goalie', age: 20, notes: 'Strong player'},
+            { name: 'Player 7', number: 11, position: 'Forward', grad: 2025, notes: 'Good shots' },
+            { name: 'Player 8', number: 6, position: 'Goalie', grad: 2028, notes: 'Strong player'},
           ],
         },
       ],
