@@ -180,3 +180,9 @@ def create_team():
 
 def create_note():
     pass
+
+def update_player_teams():
+    pass
+
+def add_player_to_team():
+    pass
