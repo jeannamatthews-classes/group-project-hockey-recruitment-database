@@ -25,6 +25,7 @@ class BuildMode(Enum):
                     BuildMode.__MODE = BuildMode.PROD
             except KeyError:
                 warn(f"\033[5;31m{BuildMode.__VARNAME} not set, defaulting to DEV\033[0m")
+                environ[BuildMode.__VARNAME] = "DEV"
                 BuildMode.__MODE = BuildMode.DEV
         return None
     
@@ -78,4 +79,4 @@ class BuildMode(Enum):
         Returns `True` if running in production mode, and `False` if running in development.
         """
         BuildMode.__check_mode_set()
-        return BuildMode.__MODE == BuildMode.DEV
+        return BuildMode.__MODE == BuildMode.PROD

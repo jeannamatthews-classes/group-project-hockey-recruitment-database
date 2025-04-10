@@ -21,9 +21,21 @@ from hockeydb import views
 urlpatterns = [
     path('', views.home, name='home'), #homepage
     path('admin/', admin.site.urls),
+    
     path('api/get/player', views.get_player_by_id, name='get_player'), #returns a json object representing a player
     path('api/get/team', views.get_team_by_id, name='get_team'), #returns a json object representing a team
-    path('api/search/team', views.search_team_by_query, name ='teams_list'),
+    path('api/get/note', views.get_note_by_id, name='get_note'),
+    
     path('api/search/player', views.search_player_by_name, name='players_list'), #returns a list of players matching first name and last name query
+    path('api/search/team', views.search_team_by_query, name ='teams_list'),
+    path('api/search/note', views.search_note_by_query, name ='notes_list'),
+    
+    path('api/update/player', views.update_player, name='update_player'),
+    path('api/update/team', views.update_team, name='update_team'),
+    path('api/update/note', views.update_note, name='update_note'),
+    
+    path('api/create/player', views.create_player, name='create_player'),
+    path('api/create/team', views.create_team, name='create_team'),
+    path('api/create/note', views.create_note, name='create_note'),
     #path('players/<int:player_id>/update', views.update_player, name='update_player')
 ]
