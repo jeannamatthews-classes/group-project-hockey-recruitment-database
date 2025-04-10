@@ -27,8 +27,8 @@
 
         <input
           type="number"
-          v-model="filters.age"
-          placeholder="Search by age"
+          v-model="filters.grad"
+          placeholder="Search by Grad. Year"
           class="filter-input"
         />
     </div>
@@ -45,7 +45,7 @@
         <p>Position: {{ player.position }}</p>
         <p>Graduation Year: {{ player.grad }}</p>
         <div class="player-notes">
-          <label for="notes">Notes:</label>
+          <label for="notes"><strong>Notes:</strong></label>
           <textarea
               v-model="player.notes"
               class="notes-textarea"
