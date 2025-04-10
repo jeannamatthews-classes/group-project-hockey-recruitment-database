@@ -12,3 +12,4 @@ Date        Time    Description
 04/03/2025  3hr     Continued work on dockerization, set up MySQL stack.
 04/07/2025  1hr     Worked on RAPS presentation
 04/07/2025  3hr     Finished initial dockerization
+04/09/2025  5hr     Worked on API implementation
