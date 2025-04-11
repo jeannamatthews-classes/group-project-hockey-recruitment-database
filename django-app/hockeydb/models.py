@@ -1,12 +1,13 @@
 from django.db import models
+from hockeydb.crud_model import CRUDModel
 
-
-class Player(models.Model):
-    id = models.AutoField(primary_key=True)
+class Player(CRUDModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
     position = models.CharField(max_length=100)
+
+    __accessible_fields = ["first_name","last_name","date_of_birth","position"]
 
 
 class Team(models.Model):
