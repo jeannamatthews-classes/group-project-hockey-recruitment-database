@@ -29,3 +29,5 @@ TIMELOG:
 04/10/2025, 10min, update GANTT chart
 04/10/2025, 15min, tweak games-view.vue and players-view.vue (restructure branch)
 04/10/2025, 30min, work on RAPs presentation slides
+04/11/2025, 30min, practice RAPs presentation
+04/11/2025, 60min, RAPS presentation (including time waiting to present, presenting, and watching presentations)
