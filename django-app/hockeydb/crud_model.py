@@ -3,7 +3,6 @@ from django.forms.models import model_to_dict
 from django.utils.log import log_response
 from django.db import models
 import json
-from warnings import warn
 from hockeydb.build_mode import BuildMode
 
 class CRUDModel(models.Model):
