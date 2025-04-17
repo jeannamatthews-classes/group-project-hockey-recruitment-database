@@ -1,5 +1,6 @@
 TIMELOG
 
+High-Level Summary before 3/11:
 I am assuming that I am not to include the time spent on individual assignments or anything of that sort. Moving forward, I will have a good system of keeping track of 
 my time spent per task, but for now this will be a rough estimate without exact dates. First, I was the one that submitted the registration for RAPS. 
 Although this could have been quicker if I just copied the very short description we had of the project for the abstract, I decided to actually write something 
@@ -38,3 +39,25 @@ DATE        TIME        TASKS
                         putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
                         both of us have a better understanding of Vue.
 4/3         15 minutes  Writing the narrative for this week and the gantt chart to the github repository.
+4/9         90 minutes  Finished watching the series: https://www.youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a. I watched it in 1.5x speed, so that's why I was 
+                        able to finish it quicker. This gave me a much better understanding of CSS and Javascript so I can actually get moving to Vue.js. 
+4/9         60 minutes  Watched the first 3 videos about Vue.js: https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1. This gave me a good understanding of
+                        important topics such as v-if so I can make tabs and all of that.
+4/10        150 minutes Spent this time before class working on player-info-view, which is shown in the commit in the restructure branch. I only made the commit on 4/17,
+                        which is a big problem that could have been avoided. I should have pushed it earlier and that is my fault, I forgot it wasn't pushed. I included the
+                        page that comes from the code in the slides used for RAPS, hopefully that's okay, I apologize. In terms of actual work here, The html was mostly simple,
+                        there wasn't anything crazy. I had never done anything with a data table, so I had to get used to that, but besides that there wasn't anything too hard.
+                        In terms of css, I was able to pick up on some stuff done by my other group members, combined with searching up for some templates online and using
+                        DeepSeek for some pointers and tips to make it look good and more similar to Clarkson colors and all while looking good. The JavaScript also wasn't too
+                        bad, it just took me some time since I don't really have much experience in any of this. Moving forward, my group and I realized that it's probably better
+                        to have some more general CSS in main.css that applies to all pages, so that is going to be one of the next things I will be working on in order to make
+                        things more organized and modular.                                                                                                     
+4/10        75 minutes  Group meeting, where we mostly discussed details about the presentation, while also changing some details on the Gantt Chart and planning out how to
+                        advance. The focus was definitely RAPS, though.
+4/10        30 minutes  Changing up the slides I was going to present at RAPS and preparing my speech so I actually do a good job during RAPS.
+4/11        15/105 minutes I'm not sure what to count for my timelog. I was there for the entirety of the presentations, but at the same time that feels very optional. But yeah,
+                            this is just the time spent at RAPS.
+4/17        45 minutes Pushed my progress to GitHub (again, I apologize), and added everything to the timelog, which took a decent amount of time to explain.
+4/17        75 minutes  Team meeting. We discussed how we'll be connecting the backend to the frontend so we can get a website that is not just a placeholder.
+                        The frontend decided what we're each going to working on. I will be working on making a global css, adding the video tab to my page, and
+                        whatever else I have time for. We also talked about the demo and how we're going to approach it moving forward. Also updated the Gantt Chartt
