@@ -13,3 +13,5 @@ Date        Time    Description
 04/07/2025  1hr     Worked on RAPS presentation
 04/07/2025  3hr     Finished initial dockerization
 04/09/2025  5hr     Worked on API implementation
+04/10/2025  3hr     Worked on cleaning up API implementation, started work on an abstract class to handle CRUD models
+04/17/2025  1.5hr   Finished CRUD API abstraction.
