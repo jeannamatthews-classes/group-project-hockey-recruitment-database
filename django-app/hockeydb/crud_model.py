@@ -16,7 +16,7 @@ class CRUDModel(models.Model):
     While I would have liked to dunder the following fields, it screws up inheritance so I can't.
     """
     _accessible_fields : list[str] = []
-    
+
     _mesg_notfound = "Object not found."
     _mesg_nogetid = "Missing object ID."
     _mesg_noquery = "No valid query parameters found."
@@ -64,7 +64,6 @@ class CRUDModel(models.Model):
     @__exception_handler
     @__require_methods(["POST"])
     def api_create(cls, request : HttpRequest):
-        warn(f"LOOK HERE BOZO: {cls._accessible_fields}")
         body = json.loads(request.body)
 
         obj = cls()
