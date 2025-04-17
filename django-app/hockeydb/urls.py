@@ -37,5 +37,8 @@ urlpatterns = [
     path('api/create/player', views.create_player, name='create_player'),
     path('api/create/team', views.create_team, name='create_team'),
     path('api/create/note', views.create_note, name='create_note'),
-    #path('players/<int:player_id>/update', views.update_player, name='update_player')
+    
+    path('api/delete/player', views.delete_player, name='delete_player'),
+    path('api/delete/team', views.delete_team, name='delete_team'),
+    path('api/delete/note', views.delete_note, name='delete_note'),
 ]
