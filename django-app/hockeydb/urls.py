@@ -18,8 +18,6 @@ from django.urls import path
 from hockeydb import views
 
 urlpatterns = [
-    path('api/', views.home, name='home'), #homepage
-    
     path('api/get/player', views.get_player, name='get_player'), #returns a json object representing a player
     path('api/get/team', views.get_team, name='get_team'), #returns a json object representing a team
     path('api/get/note', views.get_note, name='get_note'),
