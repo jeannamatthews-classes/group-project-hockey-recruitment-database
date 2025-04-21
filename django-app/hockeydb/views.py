@@ -7,9 +7,6 @@ import json
 
 logger = logging.getLogger(__name__)
 
-def home(request):
-    return JsonResponse({"status":"success","message": "API Online"})
-
 def get_player(request):
     return Player.api_read(request)
 

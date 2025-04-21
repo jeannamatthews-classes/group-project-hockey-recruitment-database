@@ -1,7 +1,7 @@
 FROM nginx:mainline-alpine
 
 # install needed packages
-RUN apk add --no-cache nodejs npm
+RUN apk add --no-cache npm
 
 # configure nginx
 RUN rm /etc/nginx/conf.d/default.conf
