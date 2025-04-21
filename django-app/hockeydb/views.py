@@ -81,7 +81,7 @@ def change_player_number_on_team(request):
     return JsonResponse({"status":"success","data":model_to_dict(membership)},status=200)
 
 
-
+@csrf_exempt
 @require_http_methods(["POST"])
 def add_player_to_team(request):
     body = json.loads(request.body)

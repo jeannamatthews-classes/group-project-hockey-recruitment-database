@@ -23,7 +23,8 @@ class Team(CRUDModel):
     _accessible_fields = ["name","coach_first_name","coach_last_name","coach_email"]
 
     @classmethod
-    @require_http_methods("POST")
+    @CRUDModel._CRUDModel__exception_handler            # dunderscores go brrr
+    @CRUDModel._CRUDModel__require_methods(["GET"])
     def api_read(cls, request : HttpRequest):
         if request.GET.get("id") is None:
             return JsonResponse({"status": "error", "message": "Missing team ID."},status=400)
@@ -44,6 +45,42 @@ class Team(CRUDModel):
             return JsonResponse({"status": "success", "data": team},status=200)
         except Team.DoesNotExist:
             return JsonResponse({"status": "error", "message": "Team not found."},status=404)
+        
+    @classmethod
+    @CRUDModel._CRUDModel__exception_handler
+    @CRUDModel._CRUDModel__require_methods(["GET"])
+    def api_search(cls, request : HttpRequest):
+        u_query : dict = request.GET.dict()
+
+        if "all" in u_query.keys():
+            query_result = cls.objects.all()
+
+        else:
+            query = {}
+            for qk in u_query.keys():
+                if qk in cls._accessible_fields:
+                    # If a query field is in the allowed list, rename it's key to match the query format
+                    query[f"{qk}__icontains"] = u_query[qk]
+
+            if len(query) == 0:
+                return JsonResponse({"status": "error", "message": cls._mesg_noquery}, status=400)
+
+            query_result = cls.objects.filter(**query)
+
+        objects = []
+        for t in query_result:
+            team = model_to_dict(t)
+
+            players = TeamMembership.objects.filter(team_id=team["id"])
+            team["players"] = []
+            for player in players:
+                player_data = model_to_dict(Player.objects.get(pk=player.player_id))
+                player_data["number_on_team"] = player.number_on_team
+                team["players"].append(player_data)
+
+            objects.append(team)
+
+        return JsonResponse({"status": "success", "data": objects},status=200)
 
 
 class TeamMembership(models.Model):
