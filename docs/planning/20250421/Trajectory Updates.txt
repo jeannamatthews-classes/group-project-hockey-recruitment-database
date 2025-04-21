@@ -1,0 +1,6 @@
+There should have been an earlier update, but this will serve as a little overview of everything. In terms of RAPS, we think it went really
+well. Since then, we have made pretty significant pushes in terms of backend integration to the frontend, where we can run everything
+together with 1 command only. We now need to make some updates on the frontend still and start connecting the database to the webpages,
+as well as try and get offline functionality to work once we have that. With a little over 2 weeks left, I think we are doing okay if we
+keep working hard. Personally (Mark), I am now mostly done with other work so I will be working on this for more hours, and I am assuming
+the rest might feel the same way. 
