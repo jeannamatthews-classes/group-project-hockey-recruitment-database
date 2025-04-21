@@ -12,3 +12,4 @@ Date          Time          Description
 04/05/2025    <1hr          Began designing slides for RAPS
 04/06/2025    2hr           Wrote more api calls
 04/06/2025    30 min        Did more work on RAPS slides
+4/21/2025     1hr 30min     Met with team to discuss in-class presentation, made tweaks to program
