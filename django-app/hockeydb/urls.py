@@ -32,13 +32,16 @@ urlpatterns = [
     
     path('api/update/player', views.update_player, name='update_player'),
     path('api/update/team', views.update_team, name='update_team'),
+    path('api/update/team_membership', views.change_player_number_on_team, name='change_player_number_on_team'),
     path('api/update/note', views.update_note, name='update_note'),
     
     path('api/create/player', views.create_player, name='create_player'),
     path('api/create/team', views.create_team, name='create_team'),
+    path('api/create/team_membership', views.add_player_to_team, name='add_player_to_team'),
     path('api/create/note', views.create_note, name='create_note'),
     
     path('api/delete/player', views.delete_player, name='delete_player'),
     path('api/delete/team', views.delete_team, name='delete_team'),
-    path('api/delete/note', views.delete_note, name='delete_note'),
+    path('api/delete/team_membership', views.remove_player_from_team, name='remove_player_from_team'),
+    path('api/delete/note', views.delete_note, name='delete_note')
 ]
