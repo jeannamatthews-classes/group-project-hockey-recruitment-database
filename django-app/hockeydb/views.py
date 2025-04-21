@@ -7,9 +7,6 @@ import json
 
 logger = logging.getLogger(__name__)
 
-def home(request):
-    return JsonResponse({"message": "Welcome to the Hockey DB!"})
-
 def get_player(request):
     return Player.api_read(request)
 
