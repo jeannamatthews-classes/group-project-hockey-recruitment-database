@@ -60,4 +60,5 @@ DATE        TIME        TASKS
 4/17        45 minutes Pushed my progress to GitHub (again, I apologize), and added everything to the timelog, which took a decent amount of time to explain.
 4/17        75 minutes  Team meeting. We discussed how we'll be connecting the backend to the frontend so we can get a website that is not just a placeholder.
                         The frontend decided what we're each going to working on. I will be working on making a global css, adding the video tab to my page, and
-                        whatever else I have time for. We also talked about the demo and how we're going to approach it moving forward. Also updated the Gantt Chartt
+                        whatever else I have time for. We also talked about the demo and how we're going to approach it moving forward. Also updated the Gantt Chartt.
+4/21        15 minutes  Updated the planning folder.
