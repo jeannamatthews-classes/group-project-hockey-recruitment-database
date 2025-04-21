@@ -98,16 +98,20 @@ class CRUDModel(models.Model):
     def api_search(cls, request : HttpRequest):
         u_query : dict = request.GET.dict()
 
-        query = {}
-        for qk in u_query.keys():
-            if qk in cls._accessible_fields:
-                # If a query field is in the allowed list, rename it's key to match the query format
-                query[f"{qk}__icontains"] = u_query[qk]
+        if "all" in u_query.keys():
+            query_result = cls.objects.all()
 
-        if len(query) == 0:
-            return JsonResponse({"status": "error", "message": cls._mesg_noquery}, status=400)
+        else:
+            query = {}
+            for qk in u_query.keys():
+                if qk in cls._accessible_fields:
+                    # If a query field is in the allowed list, rename it's key to match the query format
+                    query[f"{qk}__icontains"] = u_query[qk]
 
-        query_result = cls.objects.filter(**query)
+            if len(query) == 0:
+                return JsonResponse({"status": "error", "message": cls._mesg_noquery}, status=400)
+
+            query_result = cls.objects.filter(**query)
 
         objects = [model_to_dict(p) for p in query_result]
 
