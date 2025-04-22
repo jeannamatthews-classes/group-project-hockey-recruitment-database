@@ -1,9 +1,8 @@
 #!/bin/sh
 
 if [ "$HOCKEYDB_BUILD_MODE" = "PROD" ]; then
-    # alpine uses mariadb-admin, it is functionaly equivalent to mysqladmin
-    until mariadb-admin ping --host hockeydb-mysql --skip-ssl --silent
-    do
+    # alpine uses mariadb-admin, it is functionally equivalent to mysqladmin
+    until mariadb-admin ping --host hockeydb-mysql --skip-ssl --silent; do
         sleep 1
         echo "Waiting for mysql"
     done

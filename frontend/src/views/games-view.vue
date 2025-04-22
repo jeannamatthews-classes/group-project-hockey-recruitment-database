@@ -1,10 +1,9 @@
 <template>
   <div>
     <div class="dropdown-row">
-
       <select id="team1" v-model="selectedTeam1">
         <option value="" disabled>Select team</option>
-        <option v-for="team in teams" :key="team.name" :value="team.name">
+        <option v-for="team in teams" :key="team.id" :value="team.name">
           {{ team.name }}
         </option>
       </select>
@@ -13,7 +12,7 @@
 
       <select id="team2" v-model="selectedTeam2">
         <option value="" disabled>Select team</option>
-        <option v-for="team in teams" :key="team.name" :value="team.name">
+        <option v-for="team in teams" :key="team.id" :value="team.name">
           {{ team.name }}
         </option>
       </select>
@@ -23,18 +22,10 @@
       <div class="team">
         <h3 style="margin-bottom: 30px">{{ selectedTeam1 }}</h3>
         <ul>
-          <li v-for="player in getPlayers(selectedTeam1)" :key="player.name">
+          <li v-for="player in getPlayers(selectedTeam1)" :key="player.id">
             <div>
-              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
+              <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name }} {{ player.last_name }}</strong>
               <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
-            </div>
-            <div>
-              <label for="notes">Notes:</label>
-              <textarea
-                v-model="player.notes"
-                class="notes-textarea"
-                placeholder="Add notes here..."
-              ></textarea>
             </div>
           </li>
         </ul>
@@ -43,18 +34,10 @@
       <div class="team">
         <h3 style="margin-bottom: 30px">{{ selectedTeam2 }}</h3>
         <ul>
-          <li v-for="player in getPlayers(selectedTeam2)" :key="player.name">
+          <li v-for="player in getPlayers(selectedTeam2)" :key="player.id">
             <div>
-              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
+              <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name }} {{ player.last_name }}</strong>
               <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
-            </div>
-            <div>
-              <label for="notes">Notes:</label>
-              <textarea
-                v-model="player.notes"
-                class="notes-textarea"
-                placeholder="Add notes here..."
-              ></textarea>
             </div>
           </li>
         </ul>
@@ -68,45 +51,65 @@ export default {
   name: 'GameView',
   data() {
     return {
-      teams: [ // example team info
-        {
-          name: 'Team A',
-          players: [
-            { name: 'Player 1', number: 5, position: 'Forward', grad: 2025, notes: 'Top scorer' },
-            { name: 'Player 2', number: 28, position: 'Defense', grad: 2026, notes: 'Strong defense' },
-          ],
-        },
-        {
-          name: 'Team B',
-          players: [
-            { name: 'Player 3', number: 82, position: 'Goalie', grad: 2027, notes: 'Strong player'},
-            { name: 'Player 4', number: 99, position: 'Forward', grad: 2025, notes: 'Fast'},
-          ],
-        },
-        {
-          name: 'Team C',
-          players: [
-            { name: 'Player 5', number: 13, position: 'Defense', grad: 2027, notes: 'Good passes' },
-            { name: 'Player 6', number: 15, position: 'Forward', grad: 2026, notes: 'Good shots' },
-          ],
-        },
-        {
-          name: 'Team D',
-          players: [
-            { name: 'Player 7', number: 11, position: 'Forward', grad: 2025, notes: 'Good shots' },
-            { name: 'Player 8', number: 6, position: 'Goalie', grad: 2028, notes: 'Strong player'},
-          ],
-        },
-      ],
+      teams: [], // Teams will be dynamically populated
       selectedTeam1: '',
       selectedTeam2: '',
     };
   },
   methods: {
+    fetchTeams() {
+      // Simulate fetching data from an API
+      const response = {
+        status: "success",
+        data: [
+          {
+            id: 1,
+            name: "The Puckaneers",
+            coach_first_name: "Jamie",
+            coach_last_name: "Bennet",
+            coach_email: "jamie.bennet@example.com",
+            players: [
+              { id: 5, first_name: "Jona", last_name: "Baldwin", date_of_birth: "2003-02-20", position: "Defense", number_on_team: 27 },
+              { id: 6, first_name: "Lily", last_name: "Schultz", date_of_birth: "2005-09-20", position: "Defense", number_on_team: 13 },
+              { id: 7, first_name: "Gianna", last_name: "Bartells", date_of_birth: "2000-08-21", position: "Forward", number_on_team: 4 },
+            ],
+          },
+          {
+            id: 2,
+            name: "Tigers",
+            coach_first_name: "Lola",
+            coach_last_name: "Caines",
+            coach_email: "lola.caines@example.com",
+            players: [
+              { id: 1, first_name: "Janette", last_name: "Lane", date_of_birth: "2001-06-18", position: "Defense", number_on_team: 2 },
+              { id: 2, first_name: "Jay", last_name: "Stacy", date_of_birth: "2003-06-18", position: "Goalie", number_on_team: 87 },
+              { id: 3, first_name: "Gigi", last_name: "Bartells", date_of_birth: "2002-04-21", position: "Goalie", number_on_team: 11 },
+              { id: 4, first_name: "Maria", last_name: "Rory-Smith", date_of_birth: "2003-03-20", position: "Forward", number_on_team: 25 },
+            ],
+          },
+        ],
+      };
+
+      // Process the data into teams
+      const teams = response.data;
+
+      // Add graduation year to each player
+      teams.forEach((team) => {
+        team.players.forEach((player) => {
+          const birthYear = new Date(player.date_of_birth).getFullYear();
+          player.grad = birthYear + 18; // Assuming graduation year is birth year + 18
+        });
+      });
+
+      this.teams = teams;
+    },
     getPlayers(teamName) {
       const team = this.teams.find((team) => team.name === teamName);
       return team ? team.players : [];
     },
+  },
+  mounted() {
+    this.fetchTeams(); // Fetch teams when the component is mounted
   },
 };
 </script>
