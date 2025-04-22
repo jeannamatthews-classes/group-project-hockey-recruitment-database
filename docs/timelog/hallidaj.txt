@@ -16,3 +16,6 @@ Date        Time    Description
 04/09/2025  1hr     Worked on RAPS presentation
 04/10/2025  3hr     Worked on cleaning up API implementation, started work on an abstract class to handle CRUD models
 04/17/2025  1.5hr   Finished CRUD API abstraction.
+04/21/2025  1hr     Making improvements to code to prepare for presentation.
+04/22/2025  1hr     Making improvements to code to prepare for presentation.
+04/22/2025  1hr     Generating sample data for presentation.
