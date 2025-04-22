@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'GameView',
   data() {
@@ -57,38 +59,9 @@ export default {
     };
   },
   methods: {
-    fetchTeams() {
+    async fetchTeams() {
       // Simulate fetching data from an API
-      const response = {
-        status: "success",
-        data: [
-          {
-            id: 1,
-            name: "The Puckaneers",
-            coach_first_name: "Jamie",
-            coach_last_name: "Bennet",
-            coach_email: "jamie.bennet@example.com",
-            players: [
-              { id: 5, first_name: "Jona", last_name: "Baldwin", date_of_birth: "2003-02-20", position: "Defense", number_on_team: 27 },
-              { id: 6, first_name: "Lily", last_name: "Schultz", date_of_birth: "2005-09-20", position: "Defense", number_on_team: 13 },
-              { id: 7, first_name: "Gianna", last_name: "Bartells", date_of_birth: "2000-08-21", position: "Forward", number_on_team: 4 },
-            ],
-          },
-          {
-            id: 2,
-            name: "Tigers",
-            coach_first_name: "Lola",
-            coach_last_name: "Caines",
-            coach_email: "lola.caines@example.com",
-            players: [
-              { id: 1, first_name: "Janette", last_name: "Lane", date_of_birth: "2001-06-18", position: "Defense", number_on_team: 2 },
-              { id: 2, first_name: "Jay", last_name: "Stacy", date_of_birth: "2003-06-18", position: "Goalie", number_on_team: 87 },
-              { id: 3, first_name: "Gigi", last_name: "Bartells", date_of_birth: "2002-04-21", position: "Goalie", number_on_team: 11 },
-              { id: 4, first_name: "Maria", last_name: "Rory-Smith", date_of_birth: "2003-03-20", position: "Forward", number_on_team: 25 },
-            ],
-          },
-        ],
-      };
+      const response = await axios.get('/api/search/team', {params: {all:true}})
 
       // Process the data into teams
       const teams = response.data;
