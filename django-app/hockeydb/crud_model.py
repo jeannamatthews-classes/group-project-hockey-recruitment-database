@@ -1,7 +1,8 @@
 from django.http import HttpRequest, JsonResponse, HttpResponseNotAllowed
 from django.forms.models import model_to_dict
 from django.utils.log import log_response
-from django.db import models
+from django.db import models, IntegrityError
+from django.db.utils import OperationalError
 import json
 from hockeydb.build_mode import BuildMode
 
@@ -45,19 +46,22 @@ class CRUDModel(models.Model):
     
     def __exception_handler(func : callable):
         """
-        Magically handle exceptions so we don't have to think about them.
-        If in DEV mode, just do nothing and let django's handler do it for us.
-        If in PROD mode, return a message explaining that an exception occured, but don't give too many details for security.
+        Magically handle common exceptions so we don't have to think about them.
         """
-        if BuildMode.is_prod:
-            def handled_method(*args, **kwargs):
-                try:
-                    return func(*args, **kwargs)
-                except Exception as e:
-                    return JsonResponse({"status":"error", "message": f"A {type(e).__name__} type exception occured."},status=500)
-            return handled_method
-        else:
-            return func       
+        def handled_method(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                etype = type(e)
+                message = f"A {etype.__name__} type exception occured."
+                if etype == json.decoder.JSONDecodeError:
+                    message += " Your request likely contains malformed json."
+                elif etype == IntegrityError:
+                    message += " You likely forgot a mandatory field."
+                elif etype == OperationalError:
+                    message += " Your database is likely corrupt or needs migration."
+                return JsonResponse({"status":"error", "message": message},status=500)
+        return handled_method   
 
     @classmethod
     @__exception_handler
