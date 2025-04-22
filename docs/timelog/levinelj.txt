@@ -7,8 +7,8 @@ Date        Time    Description
 03/13/2025	1h		Helped edit design doc and did research on frontend frameworks
 03/16/2025	15m		setup timelog and writing this file
 03/25/2025	1h		Worked on setting up Django and making build/run instrucitons (PR#1 on repo)
-03/26/2025	15m		Writting my missing time log for before 03/11
-03/26/2025	15m		Writting this time log
+03/26/2025	15m		Writing my missing time log for before 03/11
+03/26/2025	15m		Writing this time log
 03/27/2025  1h15m   Meeting with team during class time
 04/01/2025  30m     Reaseach + more initial django setup
 04/02/2025  1h      Setting up a first test api and database
@@ -16,4 +16,11 @@ Date        Time    Description
 04/04/2025  15m     put up branch basic-api and helping other members
 04/05/2025  1h      Helping other members
 04/06/2025  1h      Helping other members
-04/06/2025  10m     Writing this time long
+04/06/2025  10m     Writing this time log
+04/10/2025  30m     Cleanup API code, and fix some docker issues.
+04/10/2025  1h15m   Meeting, more work on api (views.py, urls.py, models.py)
+04/13/2025  10m     Writing this time log
+04/17/2025  1h15m   Meeting: Integrate experimental frontend with backend stack to create first full stack deployment PR#32
+04/21/2025  1h15m   Meeting: Finish team membership api (views.py, PR#33), some other random cleanup
+04/22/2025  1h      Meeting before presentation and demo setup, working on setting up environments and test data
+04/22/2025  15m     Writing this time log
