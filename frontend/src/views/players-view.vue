@@ -201,12 +201,10 @@ export default {
         const newPlayerId = res.data.data.id
 
         // Add to team
-        await axios.post('/api/update/team', {
-          id: this.newPlayer.team,
-          add_player: {
-            id: newPlayerId,
+        await axios.post('/api/create/team_membership', {
+            team_id: this.newPlayer.team,
+            player_id: newPlayerId,
             number_on_team: 0  // or let them input a number if needed
-          }
         })
 
         // Re-fetch or locally add
