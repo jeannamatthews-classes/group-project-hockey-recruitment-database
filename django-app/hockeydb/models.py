@@ -7,12 +7,12 @@ from django.views.decorators.http import require_http_methods
 class Player(CRUDModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    grad_year = models.SmallIntegerField()
-    date_of_birth = models.DateField()
-    email = models.EmailField()
-    phone = models.CharField(max_length=15) # As per ITU-T reccomendation E.164 (from wikipedia)
-    position = models.CharField(max_length=100)
-    rank = models.SmallIntegerField()  # TODO: Implement data validation on rank so that two players can't be ranked the same
+    grad_year = models.SmallIntegerField(null=True)
+    date_of_birth = models.DateField(null=True)
+    email = models.EmailField(null=True)
+    phone = models.CharField(max_length=15,null=True) # As per ITU-T reccomendation E.164 (from wikipedia)
+    position = models.CharField(max_length=100,null=True)
+    rank = models.SmallIntegerField(null=True)  # TODO: Implement data validation on rank so that two players can't be ranked the same
 
     _accessible_fields = ["first_name","last_name","grad_year","date_of_birth","email","phone","position","rank"]
 
@@ -20,10 +20,10 @@ class Player(CRUDModel):
 class Team(CRUDModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    coach_first_name = models.CharField(max_length=100)
-    coach_last_name = models.CharField(max_length=100)
-    coach_email = models.EmailField()
-    team_website = models.URLField()
+    coach_first_name = models.CharField(max_length=100,null=True)
+    coach_last_name = models.CharField(max_length=100,null=True)
+    coach_email = models.EmailField(null=True)
+    team_website = models.URLField(null=True)
 
     _accessible_fields = ["name","coach_first_name","coach_last_name","coach_email"]
 
