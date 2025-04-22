@@ -34,3 +34,10 @@ TIMELOG:
 04/17/2025, 45min, learning about REST APIs 
 04/17/2025, 15min, updating GANTT
 04/17/2025, 15min, chatting with frontend & backend to plan
+04/20/2025, 30min, trying to get backend and frontend to run together
+04/20/2025, 60min, trying to learn how to fetch data from the backend
+04/20/2025, 30min, playing around with API calls
+04/21/2025, 30min, starting over and trying to understand how to fetch data from the backend
+04/21/2025, 30min, playing around in player-view, trying to fetch data
+04/21/2035, 30min, discuss with team
+04/21/2025, 30min, debug
