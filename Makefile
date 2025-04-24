@@ -8,7 +8,7 @@ dev:
 # (Re-)build and run a production-ready stack
 prod:
 	echo "Building and running production stack"
-	docker compose -f docker-compose.prod.yaml up --build
+	docker compose -f docker-compose.prod.yaml up --build --detach
 
 # Clean everything (this is highly destructive!)
 clean: clean-containers clean-data

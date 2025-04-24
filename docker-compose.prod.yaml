@@ -5,9 +5,9 @@ services:
     build: ./django-app
     environment:
       HOCKEYDB_SECRET_KEY: "django-insecure-wn@pg9nu2uw6car=7ht!5l+2cz6%xk)(sp7+*ve2+m=86q0_8e" # Don't use this in production
-      HOCKEYDB_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]" # You probably shouldn't use this in production
+      HOCKEYDB_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]" # This probably won't in production unless your environment is really weird
       HOCKEYDB_BUILD_MODE: "PROD"
-      HOCKEYDB_DB_USERNAME: "hockeydb"   # Don't use this in production!
+      HOCKEYDB_DB_USERNAME: "hockeydb"
       HOCKEYDB_DB_PASSWORD: "insecure!"  # Don't use this in production!
     expose:
       - 8000
@@ -36,7 +36,7 @@ services:
     build: ./mysql
     environment:
       MYSQL_DATABASE: "hockeydb"
-      MYSQL_USER: "hockeydb"              # Don't use this in production!
+      MYSQL_USER: "hockeydb"
       MYSQL_PASSWORD: "insecure!"         # Don't use this in production!
       MYSQL_ROOT_PASSWORD: "insecure!"    # Don't use this in production!
     expose:
