@@ -19,3 +19,4 @@ Date        Time    Description
 04/21/2025  1hr     Making improvements to code to prepare for presentation.
 04/22/2025  1hr     Making improvements to code to prepare for presentation.
 04/22/2025  1hr     Generating sample data for presentation.
+04/24/2025  1hr     Writing deployment guide
