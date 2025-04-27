@@ -20,45 +20,65 @@ I didn't really do much at all for the design document, my teammates did a great
 didn't meet, I wasn't able to give much feedback. I will be putting more work over the time of the project, just these beginning tasks were a little harder for me 
 to get involved. However, I was still very active in our groupchat.
 
-DATE        TIME        TASKS
-3/13        30 minutes  Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
-3/14        60 minutes  Created all of the necessary directories and files for the assignment. Finished my part of the homework.
-3/27        75 minutes  Group meeting where we updated the GANTT chart and figured out how to get some meaningful progress done.
-3/28        30 minutes  Finished all necessary adjustments before Friday 3/28 5 PM deadline.
-3/31        30 minutes  Spent time checking everything else that needs to be done and figuring out exactly where we are in our progress and adding a narrative about it.
-4/1         75 minutes  Met with the frontend group. We spent the bulk of our time figuring out how to include Vue in our project, and were then able to add it to a 
-                        restructure branch in order to not mess up the Django bootstrapping on accident. We also agreed on spending time learning Vue so we know exactly 
-                        where to include what files and how the files are structured when using Vue. We also agreed that we have to move forward fast at this point in time.
-4/3         15 minutes  Updating timelog 
-4/3         60 minutes  Started watching the video: https://www.youtube.com/watch?v=VeNfHj6MhgA so I can learn Vue, but there are some prerequesites that I needed to work on
-                        before that, so I decided to start recapping HTML and CSS, learning JavaScript, Events and DOM Manipulation, Fetch API and Basic HTTP, Arrow functions, 
-                        and NPM so I can actually understand Vue. I started with the YouTube series https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8BoXcpCUvdmdPZFuR5y2lV,
-                        where I have around 10 minutes left to watch and then will hop into a CSS overview and keep going.
-4/3         75 minutes  The following playlist: https://youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a&si=64eJ7XSbJylrpW1t includes CSS and JavaScript as well so
-                        I will be following that. I ended up finishing the HTML and watched the whole video about CSS, but now there are a couple of videos about actually 
-                        putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
-                        both of us have a better understanding of Vue.
-4/3         15 minutes  Writing the narrative for this week and the gantt chart to the github repository.
-4/9         90 minutes  Finished watching the series: https://www.youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a. I watched it in 1.5x speed, so that's why I was 
-                        able to finish it quicker. This gave me a much better understanding of CSS and Javascript so I can actually get moving to Vue.js. 
-4/9         60 minutes  Watched the first 3 videos about Vue.js: https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1. This gave me a good understanding of
-                        important topics such as v-if so I can make tabs and all of that.
-4/10        150 minutes Spent this time before class working on player-info-view, which is shown in the commit in the restructure branch. I only made the commit on 4/17,
-                        which is a big problem that could have been avoided. I should have pushed it earlier and that is my fault, I forgot it wasn't pushed. I included the
-                        page that comes from the code in the slides used for RAPS, hopefully that's okay, I apologize. In terms of actual work here, The html was mostly simple,
-                        there wasn't anything crazy. I had never done anything with a data table, so I had to get used to that, but besides that there wasn't anything too hard.
-                        In terms of css, I was able to pick up on some stuff done by my other group members, combined with searching up for some templates online and using
-                        DeepSeek for some pointers and tips to make it look good and more similar to Clarkson colors and all while looking good. The JavaScript also wasn't too
-                        bad, it just took me some time since I don't really have much experience in any of this. Moving forward, my group and I realized that it's probably better
-                        to have some more general CSS in main.css that applies to all pages, so that is going to be one of the next things I will be working on in order to make
-                        things more organized and modular.                                                                                                     
-4/10        75 minutes  Group meeting, where we mostly discussed details about the presentation, while also changing some details on the Gantt Chart and planning out how to
-                        advance. The focus was definitely RAPS, though.
-4/10        30 minutes  Changing up the slides I was going to present at RAPS and preparing my speech so I actually do a good job during RAPS.
-4/11        15/105 minutes I'm not sure what to count for my timelog. I was there for the entirety of the presentations, but at the same time that feels very optional. But yeah,
+DATE        TIME            TASKS
+3/13        30 minutes      Did some research on frontend frameworks and chose which one will be used in our project. Added it to the design document with reasons why.
+3/14        60 minutes      Created all of the necessary directories and files for the assignment. Finished my part of the homework.
+3/27        75 minutes      Group meeting where we updated the GANTT chart and figured out how to get some meaningful progress done.
+3/28        30 minutes      Finished all necessary adjustments before Friday 3/28 5 PM deadline.
+3/31        30 minutes      Spent time checking everything else that needs to be done and figuring out exactly where we are in our progress and adding a narrative about it.
+4/1         75 minutes      Met with the frontend group. We spent the bulk of our time figuring out how to include Vue in our project, and were then able to add it to a 
+                            restructure branch in order to not mess up the Django bootstrapping on accident. We also agreed on spending time learning Vue so we know exactly 
+                            where to include what files and how the files are structured when using Vue. We also agreed that we have to move forward fast at this point in time.
+4/3         15 minutes      Updating timelog 
+4/3         60 minutes      Started watching the video: https://www.youtube.com/watch?v=VeNfHj6MhgA so I can learn Vue, but there are some prerequesites that I needed to work on
+                            before that, so I decided to start recapping HTML and CSS, learning JavaScript, Events and DOM Manipulation, Fetch API and Basic HTTP, Arrow functions, 
+                            and NPM so I can actually understand Vue. I started with the YouTube series https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8BoXcpCUvdmdPZFuR5y2lV,
+                            where I have around 10 minutes left to watch and then will hop into a CSS overview and keep going.
+4/3         75 minutes      The following playlist: https://youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a&si=64eJ7XSbJylrpW1t includes CSS and JavaScript as well so
+                            I will be following that. I ended up finishing the HTML and watched the whole video about CSS, but now there are a couple of videos about actually 
+                            putting it into practice. We also met as a group, where Kristi and I updated the Gantt chart and discussed how we plan on meeting again soon once the
+                            both of us have a better understanding of Vue.
+4/3         15 minutes      Writing the narrative for this week and the gantt chart to the github repository.
+4/9         90 minutes      Finished watching the series: https://www.youtube.com/playlist?list=PLZlA0Gpn_vH-cEDOofOujFIknfZZpIk3a. I watched it in 1.5x speed, so that's why I was 
+                            able to finish it quicker. This gave me a much better understanding of CSS and Javascript so I can actually get moving to Vue.js. 
+4/9         60 minutes      Watched the first 3 videos about Vue.js: https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1. This gave me a good understanding of
+                            important topics such as v-if so I can make tabs and all of that.
+4/10        150 minutes     Spent this time before class working on player-info-view, which is shown in the commit in the restructure branch. I only made the commit on 4/17,
+                            which is a big problem that could have been avoided. I should have pushed it earlier and that is my fault, I forgot it wasn't pushed. I included the
+                            page that comes from the code in the slides used for RAPS, hopefully that's okay, I apologize. In terms of actual work here, The html was mostly simple,
+                            there wasn't anything crazy. I had never done anything with a data table, so I had to get used to that, but besides that there wasn't anything too hard.
+                            In terms of css, I was able to pick up on some stuff done by my other group members, combined with searching up for some templates online and using
+                            DeepSeek for some pointers and tips to make it look good and more similar to Clarkson colors and all while looking good. The JavaScript also wasn't too
+                            bad, it just took me some time since I don't really have much experience in any of this. Moving forward, my group and I realized that it's probably better
+                            to have some more general CSS in main.css that applies to all pages, so that is going to be one of the next things I will be working on in order to make
+                            things more organized and modular.                                                                                                     
+4/10        75 minutes      Group meeting, where we mostly discussed details about the presentation, while also changing some details on the Gantt Chart and planning out how to
+                            advance. The focus was definitely RAPS, though.
+4/10        30 minutes      Changing up the slides I was going to present at RAPS and preparing my speech so I actually do a good job during RAPS.
+4/11        15/105 minutes  I'm not sure what to count for my timelog. I was there for the entirety of the presentations, but at the same time that feels very optional. But yeah,
                             this is just the time spent at RAPS.
-4/17        45 minutes Pushed my progress to GitHub (again, I apologize), and added everything to the timelog, which took a decent amount of time to explain.
-4/17        75 minutes  Team meeting. We discussed how we'll be connecting the backend to the frontend so we can get a website that is not just a placeholder.
-                        The frontend decided what we're each going to working on. I will be working on making a global css, adding the video tab to my page, and
-                        whatever else I have time for. We also talked about the demo and how we're going to approach it moving forward. Also updated the Gantt Chartt.
-4/21        15 minutes  Updated the planning folder.
+4/17        45 minutes      Pushed my progress to GitHub (again, I apologize), and added everything to the timelog, which took a decent amount of time to explain.
+4/17        75 minutes      Team meeting. We discussed how we'll be connecting the backend to the frontend so we can get a website that is not just a placeholder.
+                            The frontend decided what we're each going to working on. I will be working on making a global css, adding the video tab to my page, and
+                            whatever else I have time for. We also talked about the demo and how we're going to approach it moving forward. Also updated the Gantt Chartt.
+4/21        15 minutes      Updated the planning folder.
+4/21        75 minutes      Tried to figure out how to run the program on my computer, as we integrated django into things which forced me to get docker desktop and all this other 
+                            stuff instead of just running npm run dev inside the vue app folder. Encountered some issues that were then solved in the meeting. The rest of the time before
+                            the meeting I ended up working on the global css, even though a little blindly. I had a little bit of a hard time figuring out how to organize it, but I got
+                            some progress done which I will use if we have time to moving forward after I finish some more important tasks first.
+4/21        90 minutes      Team meeting. We discussed where we were at in terms of progress and how we were going to go about the presentation. They helped me figure out how to running
+                            things on my computer. I was tasked with the rest of the frontend to integrate the backend with API calls and all of that.
+4/21        ~105 minutes    The reason I am using a tilda is because it was sort of broken apart the time of me working. I would say the time I spent confused on how the hell to do
+                            what we were supposed to do as the frontend was around 105 minutes. In this time, I did a lot of searching to learn how to incorporate the 2, and what even is
+                            a service worker, which was something that we would need to implement at some point. This was the point where I felt like simply the things we are working on
+                            are a bit too advanced for my level of web development at the moment and that's why the time was a bit broken apart, as I kind of gave up a couple of times 
+                            and came back. Krist and I talked a bit about how we were struggling and trying to find a solution to the problem throughout the night. Since there was time 
+                            pressure (the day after) to finish stuff for the demo, I was sort of trying stuff without knowing enough about Vue and it was obvious I wasn't knowledgeable
+                            enough. Luckily, Kristi was able to make some nice progress, but that's when I decided to just spend time watching more of that video series, as part 9 was 
+                            pretty related to what I needed to do.
+4/21        90 minutes      I reviewed the first 3 parts of the playlist https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1, and then watched 2 more, this time not
+                            sped up as I was already pretty tired. All of that adds up to 90 minutes.
+4/22        15 minutes      For now I'm not going to count class time for the presentation as time, but this is when we presented. The group met right before the presentation but I wasn'tab
+                            able to until 15 minutes before, where we sort of reviewed what we were going to be doing.
+4/27        30 minutes      Writing this long time log, reviewing my tasks, and checking the gantt chart. I ended up not updating it yet, but now I'll be finishing up the videos so I can
+                            work better on integrating everything. I know what to do so I will do the gantt chart a little later. 
