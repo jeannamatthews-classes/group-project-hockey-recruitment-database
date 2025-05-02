@@ -62,17 +62,8 @@ export default {
   name: 'PlayerView',
   data() {
     return {
-      players: [
-        { name: 'Player 1', team: 'Team A', number: 5, position: 'Forward', grad: 2025, notes: 'Top scorer'  },
-        { name: 'Player 2', team: 'Team A', number: 28, position: 'Defense', grad: 2026, notes: 'Strong defense' },
-        { name: 'Player 3', team: 'Team B', number: 82, position: 'Goalie', grad: 2027, notes: 'Strong player' },
-        { name: 'Player 4', team: 'Team B', number: 99, position: 'Forward', grad: 2025, notes: 'Fast' },
-        { name: 'Player 5', team: 'Team C', number: 13, position: 'Defense', grad: 2027, notes: 'Good passes' },
-        { name: 'Player 6', team: 'Team C', number: 15, position: 'Forward', grad: 2026, notes: 'Good shots' },
-        { name: 'Player 7', team: 'Team D', number: 11, position: 'Forward', grad: 2025, notes: 'Good shots' },
-        { name: 'Player 8', team: 'Team D', number: 6, position: 'Goalie', grad: 2028, notes: 'Strong player' },
-      ],
-      teams: ['Team A', 'Team B', 'Team C', 'Team D'],
+      players: [],
+      teams: [],
       positions: ['Forward', 'Defense', 'Goalie'],
       filters: {
         name: '',
@@ -99,6 +90,42 @@ export default {
       });
     },
   },
+
+  created() {
+    // fetch on init
+    this.fetchTeams()
+    //this.fetchPlayers()
+  },
+
+  methods: {
+    async fetchPlayers() {
+      const url = 'http://localhost/api/search/player?all';
+      const response = await (await fetch(url)).json();
+      console.log('Request succeeded with JSON response', response);
+      var players = [];
+      response.data.forEach((d)=>{
+        players.push({ name: d.first_name+' '+d.last_name, team: 'Team A', number:'' , position: d.position, grad: d.grad_year, notes:''  });
+      });
+
+      console.log(players);
+      this.players = players;
+    },
+    async fetchTeams() {
+      const url = 'http://localhost/api/search/team?all';
+      const response = await (await fetch(url)).json();
+      console.log('Request succeeded with JSON response', response);
+      var teams = [];
+      var players = [];
+      response.data.forEach((t)=>{
+        teams.push(t.name);
+        t.players.forEach((p)=>{
+          players.push({ name: p.first_name+' '+p.last_name, team: t.name, number: p.number_on_team, position: p.position, grad: p.grad_year, notes:''  });
+        });
+      });
+      this.teams = teams;
+      this.players = players;
+    },
+  }
 };
 </script>
 
