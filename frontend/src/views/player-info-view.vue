@@ -82,21 +82,10 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Placeholder Notes -->
-        <tr>
-          <td>2025-03-15</td>
-          <td>Coach 1</td>
-          <td>Showed excellent puck control during practice</td>
-        </tr>
-        <tr>
-          <td>2024-03-12</td>
-          <td>Coach 2</td>
-          <td>Needs to work on backchecking</td>
-        </tr>
-        <tr>
-          <td>2024-03-10</td>
-          <td>Coach 1</td>
-          <td>Great performance in scrimmage with 2 goals</td>
+        <tr v-for="note in notes">
+          <td>{{note.date}}</td>
+          <td>{{note.coach}}</td>
+          <td>{{note.content}}</td>
         </tr>
       </tbody>
     </table>
@@ -126,39 +115,44 @@ export default {
   data() {
     return {
       player: {
-        name: "Player 1",
-        rank: "99",
-        number: 99,
-        phone: "(555) 555-5555",
-        position: "Forward",
-        email: "player@clarkson.edu",
-        year: "2026",
-        teamWebsite: "https://clarksonathletics.com/sports",
-        school: "Clarkson University",
-        coachEmail: "coach@clarkson.edu",
-        notes: "Top scorer with 25 goals last season. Strong leadership skills."
+        name: "",
+        rank: "",
+        number: 0,
+        phone: "",
+        position: "",
+        email: "",
+        year: "",
+        teamWebsite: "",
+        school: "",
+        coachEmail: "",
+        notes: ""
       },
       notes: [
         {
-          date: '2024-03-15',
-          coach: 'Kris Hogg',
-          content: 'Showed excellent puck control during practice. Potential starter material.'
+          date: '2025-01-01',
+          coach: 'Coach',
+          content: 'Content'
         },
-        {
-          date: '2024-03-12',
-          coach: 'Assistant Coach',
-          content: 'Needs to work on backchecking. Discussed strategies for improving defensive awareness.'
-        },
-        {
-          date: '2024-03-08',
-          coach: 'Kris Hogg',
-          content: 'Impressive performance in the last game with 3 assists. Leadership qualities emerging.'
-        }
       ],
       tabs: ['Notes', 'Videos', 'Stats'],
       activeTab: 'Notes'
     };
+  },
+  created() {
+    // fetch on init
+    this.fetchPlayer(4);
+  },
+  
+  methods: {
+    async fetchPlayer(id) {
+      const url = 'http://localhost/api/get/player?id='+id;
+      const response = await (await fetch(url)).json();
+      console.log('Request succeeded with JSON response', response);
+      const p = response.data;
+      this.player = { name: p.first_name+' '+p.last_name, rank:p.rank, position: p.position, year: p.grad_year, phone: p.phone };
+    },
   }
+
 };
 </script>
 
