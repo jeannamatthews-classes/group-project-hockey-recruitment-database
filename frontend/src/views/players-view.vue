@@ -33,12 +33,13 @@
         />
     </div>
 
-    <div class="player-list">
+    <div class="player-list" v-if="players.length">
       <div
         v-for="player in filteredPlayers"
         :key="player.name"
         class="player-card"
       >
+      <!-- <router-link router-link to="/player-info">Players</router-link> -->
         <h3><span style="color: #ffcd00">#{{ player.number }} </span> &nbsp {{ player.name }}</h3>
         <div class="player-divider"></div>
         <p>Team: {{ player.team }}</p>
@@ -51,6 +52,7 @@
               class="notes-textarea"
               placeholder="Add notes here..."
           ></textarea>
+          <button @click="saveNote(player)">Save</button>
         </div>
       </div>
     </div>
@@ -69,7 +71,7 @@ export default {
         name: '',
         team: '',
         position: '',
-        age: '',
+        grad: '',
       },
     };
   },
@@ -82,11 +84,11 @@ export default {
         const matchesTeam =
           !this.filters.team || player.team === this.filters.team;
         const matchesPosition =
-          !this.filters.position || player.position === this.filters.position;
-        const matchesAge =
-          !this.filters.age || player.age === Number(this.filters.age);
+          !this.filters.position || player.position.toUpperCase().indexOf(this.filters.position.toUpperCase()) !== -1;
+        const matchesGrad =
+          !this.filters.grad || player.grad === Number(this.filters.grad);
 
-        return matchesName && matchesTeam && matchesPosition && matchesAge;
+        return matchesName && matchesTeam && matchesPosition && matchesGrad;
       });
     },
   },
@@ -94,22 +96,9 @@ export default {
   created() {
     // fetch on init
     this.fetchTeams()
-    //this.fetchPlayers()
   },
 
   methods: {
-    async fetchPlayers() {
-      const url = 'http://localhost/api/search/player?all';
-      const response = await (await fetch(url)).json();
-      console.log('Request succeeded with JSON response', response);
-      var players = [];
-      response.data.forEach((d)=>{
-        players.push({ name: d.first_name+' '+d.last_name, team: 'Team A', number:'' , position: d.position, grad: d.grad_year, notes:''  });
-      });
-
-      console.log(players);
-      this.players = players;
-    },
     async fetchTeams() {
       const url = 'http://localhost/api/search/team?all';
       const response = await (await fetch(url)).json();
@@ -119,12 +108,29 @@ export default {
       response.data.forEach((t)=>{
         teams.push(t.name);
         t.players.forEach((p)=>{
-          players.push({ name: p.first_name+' '+p.last_name, team: t.name, number: p.number_on_team, position: p.position, grad: p.grad_year, notes:''  });
+          players.push({ id: p.id, name: p.first_name+' '+p.last_name, team: t.name, number: p.number_on_team, position: p.position, grad: p.grad_year, notes:''  });
         });
       });
       this.teams = teams;
       this.players = players;
     },
+
+    async saveNote(player){
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ player: player.id, content: player.notes })
+      };
+      const response = await fetch("http://localhost/api/create/note", requestOptions);
+      const data = await response.json();
+      if (data.id) {
+        console.log("Note saved id", data.id);   
+        //clear form
+        player.notes = '';
+      } else {
+        alert("Error saving note");
+      }
+    }
   }
 };
 </script>
