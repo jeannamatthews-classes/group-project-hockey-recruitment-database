@@ -35,6 +35,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
+              <button @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -55,6 +56,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
+              <button @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -68,45 +70,46 @@ export default {
   name: 'GameView',
   data() {
     return {
-      teams: [ // example team info
-        {
-          name: 'Team A',
-          players: [
-            { name: 'Player 1', number: 5, position: 'Forward', grad: 2025, notes: 'Top scorer' },
-            { name: 'Player 2', number: 28, position: 'Defense', grad: 2026, notes: 'Strong defense' },
-          ],
-        },
-        {
-          name: 'Team B',
-          players: [
-            { name: 'Player 3', number: 82, position: 'Goalie', grad: 2027, notes: 'Strong player'},
-            { name: 'Player 4', number: 99, position: 'Forward', grad: 2025, notes: 'Fast'},
-          ],
-        },
-        {
-          name: 'Team C',
-          players: [
-            { name: 'Player 5', number: 13, position: 'Defense', grad: 2027, notes: 'Good passes' },
-            { name: 'Player 6', number: 15, position: 'Forward', grad: 2026, notes: 'Good shots' },
-          ],
-        },
-        {
-          name: 'Team D',
-          players: [
-            { name: 'Player 7', number: 11, position: 'Forward', grad: 2025, notes: 'Good shots' },
-            { name: 'Player 8', number: 6, position: 'Goalie', grad: 2028, notes: 'Strong player'},
-          ],
-        },
-      ],
+      teams: [],
       selectedTeam1: '',
       selectedTeam2: '',
     };
   },
+
+  created() {
+    // fetch on init
+    this.fetchTeams()
+  },
+
   methods: {
     getPlayers(teamName) {
       const team = this.teams.find((team) => team.name === teamName);
       return team ? team.players : [];
     },
+
+    async fetchTeams() {
+      const url = 'http://localhost/api/search/team?all';
+      const response = await (await fetch(url)).json();
+      console.log('Request succeeded with JSON response', response);
+      this.teams = response.data;
+    },
+
+    async saveNote(player){
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ player: player.id, content: player.notes })
+      };
+      const response = await fetch("http://localhost/api/create/note", requestOptions);
+      const data = await response.json();
+      if (data.id) {
+        console.log("Note saved id", data.id);   
+        //clear form
+        player.notes = '';
+      } else {
+        alert("Error saving note");
+      }
+    }
   },
 };
 </script>
