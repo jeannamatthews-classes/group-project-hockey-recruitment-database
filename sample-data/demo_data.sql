@@ -1,4 +1,4 @@
-INSERT INTO hockeydb_player (first_name,last_name,grad_year,date_of_birth,email,phone,"position","rank") VALUES
+INSERT INTO hockeydb_player (first_name,last_name,grad_year,date_of_birth,email,phone,'position','rank') VALUES
 	 ('Leodora','Arela',2030,'2004-02-10','Leodora.Arela@positron.me','4294456897','Center',0),
 	 ('Persis','Spada',2030,'2001-05-04','Persis.Spada@fmail.com','9240387718','Right Defense',1),
 	 ('Georgina','Sidoney',2030,'2003-11-22','Georgina.Sidoney@inlook.org','3965384138','Right Wing',2),
@@ -100,11 +100,11 @@ INSERT INTO hockeydb_player (first_name,last_name,grad_year,date_of_birth,email,
 	 ('Ashil','Garvy',2030,'2004-07-09','Ashil.Garvy@example.com','5341479731','Center',98),
 	 ('Pauline','Latoniah',2030,'2001-03-03','Pauline.Latoniah@example.com','8398435001','Right Defense',99);
 INSERT INTO hockeydb_team VALUES
-    (1,"Samplesville Saints","Joe","Sampleton","joe.sampleton@samplesville.org","samplesville.org"),
-    (2,"Fakesland Foxes","George","Fakerton","fakertongeorge@fakesland.org","fakesland.org"),
-    (3,"Exampletown Eagles","Samantha","Examplesmith","examplesmiths@exampletown.org","exampletown.org"),
-    (4,"Anyplace Armadillos","Martin","Anyman","manyman@anyplace.org","anyplace.org"),
-    (5,"Madeupburb Muskrats","Alice","Madeupperson","alicem@madeupburb.org","madeupburb.org");
+    (1,'Samplesville Saints','Joe','Sampleton','joe.sampleton@samplesville.org','samplesville.org'),
+    (2,'Fakesland Foxes','George','Fakerton','fakertongeorge@fakesland.org','fakesland.org'),
+    (3,'Exampletown Eagles','Samantha','Examplesmith','examplesmiths@exampletown.org','exampletown.org'),
+    (4,'Anyplace Armadillos','Martin','Anyman','manyman@anyplace.org','anyplace.org'),
+    (5,'Madeupburb Muskrats','Alice','Madeupperson','alicem@madeupburb.org','madeupburb.org');
 INSERT INTO hockeydb_teammembership VALUES
     (0, 0, 0, 0),
     (1, 1, 1, 0),
