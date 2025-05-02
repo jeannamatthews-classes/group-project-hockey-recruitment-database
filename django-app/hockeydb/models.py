@@ -158,7 +158,7 @@ class Team(CRUDModel):
                 try:
                     player_data = model_to_dict(Player.objects.get(pk=player.player_id))
                 except Player.DoesNotExist:
-                    logger.error(f"Player with ID {player.player_id} not found for team {team["id"]}.")
+                    logger.error(f"Player with ID {player.player_id} not found for team {team['id']}.")
                     continue
                 player_data["number_on_team"] = player.number_on_team
                 team["players"].append(player_data)
