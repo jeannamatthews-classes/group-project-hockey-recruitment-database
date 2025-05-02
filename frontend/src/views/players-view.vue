@@ -123,8 +123,8 @@ export default {
       };
       const response = await fetch("http://localhost/api/create/note", requestOptions);
       const data = await response.json();
-      if (data.id) {
-        console.log("Note saved id", data.id);   
+      if (data.id.id) {
+        console.log("Note saved id", data.id.id);   
         //clear form
         player.notes = '';
       } else {
