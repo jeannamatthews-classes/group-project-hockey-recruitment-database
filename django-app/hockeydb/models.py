@@ -3,6 +3,9 @@ from django.forms.models import model_to_dict
 from hockeydb.crud_model import CRUDModel
 from django.http import HttpRequest, JsonResponse
 from django.views.decorators.http import require_http_methods
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Player(CRUDModel):
     first_name = models.CharField(max_length=100)
@@ -15,6 +18,75 @@ class Player(CRUDModel):
     rank = models.SmallIntegerField(null=True)  # TODO: Implement data validation on rank so that two players can't be ranked the same
 
     _accessible_fields = ["first_name","last_name","grad_year","date_of_birth","email","phone","position","rank"]
+
+    @classmethod
+    @CRUDModel._CRUDModel__exception_handler
+    @CRUDModel._CRUDModel__require_methods(["GET"])
+    def api_read(cls, request : HttpRequest):
+        if request.GET.get("id") is None:
+            return JsonResponse({"status": "error", "message": "Missing player ID."},status=400)
+ 
+        player_id = request.GET.get("id")
+    
+        try:
+            player = model_to_dict(Player.objects.get(pk=player_id))
+
+            # Get the teams the player is on
+            teams = TeamMembership.objects.filter(player_id=player_id)
+            player["teams"] = []
+            for team in teams:
+                try:
+                    team_data = model_to_dict(Team.objects.get(pk=team.team_id))
+                except Team.DoesNotExist:
+                    logger.error(f"Team with ID {team.team_id} not found for player {player_id}.")
+                    continue
+                team_data["number_on_team"] = team.number_on_team
+                player["teams"].append(team_data)
+    
+            return JsonResponse({"status": "success", "data": player},status=200)
+        except Player.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Player not found."},status=404)
+        
+    @classmethod
+    @CRUDModel._CRUDModel__exception_handler
+    @CRUDModel._CRUDModel__require_methods(["GET"])
+    def api_search(cls, request : HttpRequest):
+        u_query : dict = request.GET.dict()
+
+        if "all" in u_query.keys():
+            query_result = cls.objects.all()
+
+        else:
+            query = {}
+            for qk in u_query.keys():
+                if qk in cls._accessible_fields:
+                    # If a query field is in the allowed list, rename it's key to match the query format
+                    query[f"{qk}__icontains"] = u_query[qk]
+
+            if len(query) == 0:
+                return JsonResponse({"status": "error", "message": cls._mesg_noquery}, status=400)
+
+            query_result = cls.objects.filter(**query)
+
+        objects = []
+        for p in query_result:
+            player = model_to_dict(p)
+
+            # Get the teams the player is on
+            teams = TeamMembership.objects.filter(player_id=player["id"])
+            player["teams"] = []
+            for team in teams:
+                try:
+                    team_data = model_to_dict(Team.objects.get(pk=team.team_id))
+                except Team.DoesNotExist:
+                    logger.error(f"Team with ID {team.team_id} not found for player {player['id']}.")
+                    continue
+                team_data["number_on_team"] = team.number_on_team
+                player["teams"].append(team_data)
+
+            objects.append(player)
+
+        return JsonResponse({"status": "success", "data": objects},status=200)
 
 
 class Team(CRUDModel):
@@ -43,7 +115,11 @@ class Team(CRUDModel):
             players = TeamMembership.objects.filter(team_id=team_id)
             team["players"] = []
             for player in players:
-                player_data = model_to_dict(Player.objects.get(pk=player.player_id))
+                try:
+                    player_data = model_to_dict(Player.objects.get(pk=player.player_id))
+                except Player.DoesNotExist:
+                    logger.error(f"Player with ID {player.player_id} not found for team {team_id}.")
+                    continue
                 player_data["number_on_team"] = player.number_on_team
                 team["players"].append(player_data)
     
@@ -79,7 +155,11 @@ class Team(CRUDModel):
             players = TeamMembership.objects.filter(team_id=team["id"])
             team["players"] = []
             for player in players:
-                player_data = model_to_dict(Player.objects.get(pk=player.player_id))
+                try:
+                    player_data = model_to_dict(Player.objects.get(pk=player.player_id))
+                except Player.DoesNotExist:
+                    logger.error(f"Player with ID {player.player_id} not found for team {team['id']}.")
+                    continue
                 player_data["number_on_team"] = player.number_on_team
                 team["players"].append(player_data)
 
