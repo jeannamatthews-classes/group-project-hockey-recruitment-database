@@ -73,7 +73,12 @@ class CRUDModel(models.Model):
 
         for field in cls._accessible_fields:
             try:
-                setattr(obj,field,body[field])
+                if cls._meta.get_field(field).get_internal_type() == "ForeignKey":
+                    # If the field is a foreign key, we need to set the id of the related object
+                    # instead of the object itself.
+                    setattr(obj, field+"_id", body[field])
+                else:
+                    setattr(obj,field,body[field])
             except KeyError:
                 pass # Ignore fields that don't exist
 
@@ -110,7 +115,12 @@ class CRUDModel(models.Model):
             for qk in u_query.keys():
                 if qk in cls._accessible_fields:
                     # If a query field is in the allowed list, rename it's key to match the query format
-                    query[f"{qk}__icontains"] = u_query[qk]
+                    if cls._meta.get_field(qk).get_internal_type() == "ForeignKey":
+                        # If the field is a foreign key, we need to set the id of the related object
+                        # instead of the object itself.
+                        query[f"{qk}_id"] = u_query[qk]
+                    else:
+                        query[f"{qk}__icontains"] = u_query[qk]
 
             if len(query) == 0:
                 return JsonResponse({"status": "error", "message": cls._mesg_noquery}, status=400)
@@ -139,7 +149,12 @@ class CRUDModel(models.Model):
 
         for field in cls._accessible_fields:
             try:
-                setattr(obj,field,body[field])
+                if cls._meta.get_field(field).get_internal_type() == "ForeignKey":
+                    # If the field is a foreign key, we need to set the id of the related object
+                    # instead of the object itself.
+                    setattr(obj, field+"_id", body[field])
+                else:
+                    setattr(obj,field,body[field])
             except KeyError:
                 pass # Ignore fields that don't exist
 
