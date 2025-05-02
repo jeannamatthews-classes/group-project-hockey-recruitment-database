@@ -81,4 +81,16 @@ DATE        TIME            TASKS
 4/22        15 minutes      For now I'm not going to count class time for the presentation as time, but this is when we presented. The group met right before the presentation but I wasn'tab
                             able to until 15 minutes before, where we sort of reviewed what we were going to be doing.
 4/27        30 minutes      Writing this long time log, reviewing my tasks, and checking the gantt chart. I ended up not updating it yet, but now I'll be finishing up the videos so I can
-                            work better on integrating everything. I know what to do so I will do the gantt chart a little later. 
+                            work better on integrating everything. I know what to do so I will do the gantt chart a little later.
+4/29        210 minutes     Went back to take notes on earlier videos, and watched up until halway of the 10th video, as I noticed it wouldn't be that needed for this project. I have around 
+                            6 pages that help me figure out exactly how to advance.
+5/1         75 minutes      I was able to actually use real data now, which will be shown by the push to both players-view and player-info-view. I did mess up the filtering for the 
+                            players_view unfortunately but I will try and fix that soon. To fetch I used the help of the videos and https://vuejs.org/examples/#fetching-data. However, I now
+                            need help with the notes part, as the API is not set up correctly for that and it also doesn't facilitate the player-info-view either. Notes, is a very important 
+                            part of our project, so I will be focusing on that a lot.
+5/1         45 minutes      When trying to actually fetch the data from the backend, I saw that the date format was actually incorrect so I changed it, which will be reflected in the
+                            next push. This website: https://stackoverflow.com/questions/14202944/sqlite-select-random-datetime-in-range helped me figure out how to deal with the issue, and
+                            ended up downloading DBeaver to deal with the issue and actually be able to read what the database has, where I then fixed the issue. This also took a bit because
+                            I had to deal with my own issues with Docker and actually running the program.
+5/1         15 minutes      Wrote this timelog.
+
