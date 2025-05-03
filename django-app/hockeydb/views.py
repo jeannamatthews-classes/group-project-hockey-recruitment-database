@@ -97,3 +97,11 @@ def remove_player_from_team(request):
         team_id=body["team_id"]
     )
     return JsonResponse({"status":"success"},status=200)
+
+# UNIMPLEMENTED
+@require_http_methods(["POST"])
+def upload_video(request : HttpRequest):
+    for file in request.FILES:
+        f_content = request.FILES[file]
+    return JsonResponse({"status":"error","message":"Unimplemented Feature"},status=418)
+        

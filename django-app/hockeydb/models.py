@@ -194,3 +194,11 @@ class Note(CRUDModel):
     content = models.TextField()
 
     _accessible_fields = ["player","content"]
+
+class Video(models.Model):
+    id = models.AutoField(primary_key=True)
+    player = models.ForeignKey(
+        Player,
+        on_delete=models.CASCADE
+    )
+    content = models.BinaryField()
