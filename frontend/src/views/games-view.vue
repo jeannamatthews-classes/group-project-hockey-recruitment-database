@@ -35,7 +35,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button @click="saveNote(player)">Save</button>
+              <button  v-if="player.notes.length > 3" @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -56,7 +56,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button @click="saveNote(player)">Save</button>
+              <button v-if="player.notes.length > 3" @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -70,7 +70,36 @@ export default {
   name: 'GameView',
   data() {
     return {
-      teams: [],
+      teams: [ // example team info
+        {
+          name: 'Team A',
+          players: [
+            { name: 'Player 1', number: 5, position: 'Forward', grad: 2025, notes: '' },
+            { name: 'Player 2', number: 28, position: 'Defense', grad: 2026, notes: '' },
+          ],
+        },
+        {
+          name: 'Team B',
+          players: [
+            { name: 'Player 3', number: 82, position: 'Goalie', grad: 2027, notes: ''},
+            { name: 'Player 4', number: 99, position: 'Forward', grad: 2025, notes: ''},
+          ],
+        },
+        {
+          name: 'Team C',
+          players: [
+            { name: 'Player 5', number: 13, position: 'Defense', grad: 2027, notes: '' },
+            { name: 'Player 6', number: 15, position: 'Forward', grad: 2026, notes: '' },
+          ],
+        },
+        {
+          name: 'Team D',
+          players: [
+            { name: 'Player 7', number: 11, position: 'Forward', grad: 2025, notes: '' },
+            { name: 'Player 8', number: 6, position: 'Goalie', grad: 2028, notes: ''},
+          ],
+        },
+      ],
       selectedTeam1: '',
       selectedTeam2: '',
     };
