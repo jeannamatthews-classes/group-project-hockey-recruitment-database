@@ -25,6 +25,7 @@
         <ul>
           <li v-for="player in getPlayers(selectedTeam1)" :key="player.name">
             <div>
+              <div><router-link :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link></div>
               <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name + ' ' + player.last_name }}</strong>
               <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad_year }}
             </div>
@@ -46,6 +47,7 @@
         <ul>
           <li v-for="player in getPlayers(selectedTeam2)" :key="player.id">
             <div>
+              <div><router-link :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link></div>
               <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name + ' ' + player.last_name  }}</strong>
               <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad_year }}
             </div>
