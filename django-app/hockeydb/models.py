@@ -1,9 +1,11 @@
 from django.db import models
+from django.db.utils import IntegrityError
 from django.forms.models import model_to_dict
 from hockeydb.crud_model import CRUDModel
 from django.http import HttpRequest, JsonResponse
 from django.views.decorators.http import require_http_methods
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +17,7 @@ class Player(CRUDModel):
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=15,null=True) # As per ITU-T reccomendation E.164 (from wikipedia)
     position = models.CharField(max_length=100,null=True)
-    rank = models.SmallIntegerField(null=True)  # TODO: Implement data validation on rank so that two players can't be ranked the same
+    rank = models.SmallIntegerField(null=True, unique=True)  # TODO: Improve ranking system so ranks are sequential with no gaps
 
     _accessible_fields = ["first_name","last_name","grad_year","date_of_birth","email","phone","position","rank"]
 
@@ -87,7 +89,80 @@ class Player(CRUDModel):
             objects.append(player)
 
         return JsonResponse({"status": "success", "data": objects},status=200)
+    
+    @classmethod
+    @CRUDModel._CRUDModel__exception_handler
+    @CRUDModel._CRUDModel__require_methods(["POST"])
+    def api_create(cls, request : HttpRequest):
+        body = json.loads(request.body)
 
+        obj = cls()
+
+        for field in cls._accessible_fields:
+            try:
+                if cls._meta.get_field(field).get_internal_type() == "ForeignKey":
+                    # If the field is a foreign key, we need to set the id of the related object
+                    # instead of the object itself.
+                    setattr(obj, field+"_id", body[field])
+                else:
+                    if field == "rank" and cls.objects.get(rank=body["rank"]) != None:
+                        for player in cls.objects.exclude(rank__isnull=True,rank__lt=body["rank"]).order_by("-rank"):
+                            
+                            if player.rank >= body["rank"]:
+                                player.rank += 1
+                                player.save()
+                            else:
+                                # we've evaluated all players who need to be shoved
+                                break
+                    setattr(obj,field,body[field])
+
+            except KeyError:
+                pass # Ignore fields that don't exist
+
+        obj.save()
+
+        return JsonResponse({"status":"success","data":model_to_dict(obj)},status=200)
+    
+    @classmethod
+    @CRUDModel._CRUDModel__exception_handler
+    @CRUDModel._CRUDModel__require_methods(["POST"])
+    def api_update(cls, request : HttpRequest):
+        body = json.loads(request.body)
+
+        try:
+            id = body["id"]
+        except KeyError:
+            return JsonResponse({"status":"error","message":cls._mesg_nogetid},status=400)
+        
+        try:
+            obj = cls.objects.get(id=id)
+        except cls.DoesNotExist:
+            return JsonResponse({"status":"error","message":cls._mesg_notfound},status=404)
+
+        for field in cls._accessible_fields:
+            try:
+                if cls._meta.get_field(field).get_internal_type() == "ForeignKey":
+                    # If the field is a foreign key, we need to set the id of the related object
+                    # instead of the object itself.
+                    setattr(obj, field+"_id", body[field])
+                else:
+                    if field == "rank" and cls.objects.get(rank=body["rank"]) != None:
+                        for player in cls.objects.exclude(rank__isnull=True,rank__lt=body["rank"]).order_by("-rank"):
+                            
+                            if player.rank >= body["rank"]:
+                                player.rank += 1
+                                player.save()
+                            else:
+                                # we've evaluated all players who need to be shoved
+                                break
+                    setattr(obj,field,body[field])
+                
+            except KeyError:
+                pass # Ignore fields that don't exist
+
+        obj.save()
+        
+        return JsonResponse({"status":"success","data":model_to_dict(obj)},status=200)
 
 class Team(CRUDModel):
     id = models.AutoField(primary_key=True)
