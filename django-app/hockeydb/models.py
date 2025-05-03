@@ -105,10 +105,10 @@ class Player(CRUDModel):
                     # instead of the object itself.
                     setattr(obj, field+"_id", body[field])
                 else:
-                    if field == "rank" and cls.objects.get(rank=body["rank"]) != None:
+                    if field == "rank" and body["rank"] != None and cls.objects.filter(rank=body["rank"]) != None:
                         for player in cls.objects.exclude(rank__isnull=True,rank__lt=body["rank"]).order_by("-rank"):
                             
-                            if player.rank >= body["rank"]:
+                            if player.rank != None and player.rank >= body["rank"]:
                                 player.rank += 1
                                 player.save()
                             else:
@@ -146,10 +146,10 @@ class Player(CRUDModel):
                     # instead of the object itself.
                     setattr(obj, field+"_id", body[field])
                 else:
-                    if field == "rank" and cls.objects.get(rank=body["rank"]) != None:
+                    if field == "rank" and body["rank"] != None and cls.objects.filter(rank=body["rank"]) != None:
                         for player in cls.objects.exclude(rank__isnull=True,rank__lt=body["rank"]).order_by("-rank"):
                             
-                            if player.rank >= body["rank"]:
+                            if player.rank != None and player.rank >= body["rank"]:
                                 player.rank += 1
                                 player.save()
                             else:

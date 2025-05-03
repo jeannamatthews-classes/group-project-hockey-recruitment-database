@@ -80,8 +80,8 @@ export default {
         id: 0,        
         first_name: "",
         last_name: "",
-        rank: "",
-        number:  "",
+        rank: null,
+        number:  0,
         phone: "",
         position: "",
         email: "",
@@ -98,6 +98,7 @@ export default {
       this.player = response.data;
     },
     async savePlayer(player){
+      this.player.rank = Number(this.player.rank) // no clue if this is a good way to do this but rank needs to be a number
       const body = JSON.stringify(player);
       console.log(body);
       const requestOptions = {
