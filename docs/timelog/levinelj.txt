@@ -24,3 +24,6 @@ Date        Time    Description
 04/21/2025  1h15m   Meeting: Finish team membership api (views.py, PR#33), some other random cleanup
 04/22/2025  1h      Meeting before presentation and demo setup, working on setting up environments and test data
 04/22/2025  15m     Writing this time log
+04/24/2025  1h15m   Meeting, more work setting up test data, started user docs
+05/02/2025  1h30m   Added teams information to player API calls, fixed bug with note api calls due to db foreign key handling
+05/03/2025  15m     Writing this time log
