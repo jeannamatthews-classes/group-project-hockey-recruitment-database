@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import GamesView from '../views/games-view.vue'
 import PlayersView from '../views/players-view.vue'
-import TeamsView from '../views/teams-info-view.vue'
+import TeamsView from '../views/teams-view.vue'
+import TeamsInfoView from '../views/teams-info-view.vue'
 import PlayerInfoView from '../views/player-info-view.vue'
+import PlayerEditView from '../views/player-edit-view.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,14 +25,24 @@ const router = createRouter({
       component: PlayersView,
     },
     {
-      path: '/team-info',
-      name: 'team-info',
+      path: '/player-info/:id',
+      name: 'player-info',
+      component: PlayerInfoView,
+    },
+    {
+      path: '/player-edit/:id',
+      name: 'player-edit',
+      component: PlayerEditView,
+    },  
+    {
+      path: '/teams',
+      name: 'teams',
       component: TeamsView,
     },
     {
-      path: '/player-info',
-      name: 'player-info',
-      component: PlayerInfoView,
+      path: '/team-info/:id',
+      name: 'team-info',
+      component: TeamsInfoView,
     },
   ],
 })
