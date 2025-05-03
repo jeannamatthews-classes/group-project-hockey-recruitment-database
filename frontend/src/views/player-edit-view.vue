@@ -63,13 +63,13 @@ export default {
         id: this.$route.params.id,        
         first_name: "Player",
         last_name: this.$route.params.id,
-        rank: "99",
+        rank: 99,
         number:  this.$route.params.id,
         phone: "(555) 555-5555",
         position: "Forward",
         email: "player@clarkson.edu",
-        year: "2026",
-        date_of_birth: "06/07/2004"
+        year: 2026,
+        date_of_birth: "2004-06-07"
       },
     };
   },
@@ -80,13 +80,13 @@ export default {
         id: 0,        
         first_name: "",
         last_name: "",
-        rank: null,
-        number:  0,
-        phone: null,
-        position: null,
-        email: null,
-        year: null,
-        date_of_birth: null
+        rank: undefined,
+        number:  undefined,
+        phone: undefined,
+        position: undefined,
+        email: undefined,
+        year: undefined,
+        date_of_birth: undefined
       }
   },
   
