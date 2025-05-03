@@ -21,4 +21,4 @@ Date        Time    Description
 04/22/2025  1hr     Generating sample data for presentation.
 04/24/2025  1hr     Writing deployment guide
 05/02/2025  1.5hr   Improve ranking implementation on backend
-05/02/2025  45min   Bugfixing
+05/02/2025  1.25hr  Bugfixing
