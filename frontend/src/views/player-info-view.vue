@@ -48,14 +48,18 @@
         <span class="detail-label">DOB:</span>
         <span class="detail-value">{{ player.date_of_birth }}</span>
       </div>
+    </div>
 
-      <div class="detail-item">
+    <!-- Teams -->  
+    <h3>Teams</h3>
+    <div class="details-grid" v-for="team in player.teams">
+      <div class="detail-item" >
         <span class="detail-label">Team Website:</span>
-        <a :href="player.teamWebsite" class="detail-link">{{ player.teamWebsite }}</a>
+        <a :href="team.team_website" class="detail-link">{{ team.team_website }}</a>
       </div>
       <div class="detail-item">
         <span class="detail-label">Coach Email:</span>
-        <span class="detail-value">{{ player.coachEmail }}</span>
+        <span class="detail-value">{{ team.coach_email }}</span>
       </div>
     </div>
 
@@ -123,8 +127,9 @@ export default {
         email: "player@clarkson.edu",
         year: "2026",
         date_of_birth: "06/07/2004",
-        teamWebsite: "https://clarksonathletics.com/sports",
-        coachEmail: "coach@clarkson.edu",
+        teams: [
+          {team_website: "https://clarksonathletics.com/sports", coach_email: "coach@clarkson.edu"},
+        ]
       },
       notes: [
         {
