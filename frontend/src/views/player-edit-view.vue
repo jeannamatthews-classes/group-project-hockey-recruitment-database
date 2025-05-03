@@ -1,6 +1,7 @@
 <template>
   <div class="player-info-view">
-    <router-link :to="{ name: 'player-edit', params: { id: player.id } }">Player Edit</router-link>
+    <router-link v-if="player.id > 0" :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link>
+
     <!-- Photo Section -->
     <div class="photo-section">
       <img 
@@ -14,96 +15,42 @@
     <div class="details-grid">
       <div class="detail-item">
         <span class="detail-label">Name:</span>
-        <span class="detail-value">{{ player.first_name }} {{ player.last_name }}</span>
+        <span class="detail-value"><input type="text" v-model="player.first_name" placeholder="First"/><input type="text" v-model="player.last_name" placeholder="Last"/></span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Rank:</span>
-        <span class="detail-value">{{ player.rank }}</span>
+        <span class="detail-value"><input type="text" v-model="player.rank"/></span>
       </div>
 
       <div class="detail-item">
         <span class="detail-label">Number:</span>
-        <span class="detail-value">#{{ player.number }}</span>
+        <span class="detail-value">#<input type="text" v-model="player.number"/></span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Phone:</span>
-        <span class="detail-value">{{ player.phone }}</span>
+        <span class="detail-value"><input type="text" v-model="player.phone"/></span>
       </div>
 
       <div class="detail-item">
         <span class="detail-label">Position:</span>
-        <span class="detail-value">{{ player.position }}</span>
+        <span class="detail-value"><input type="text" v-model="player.position"/></span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Email:</span>
-        <span class="detail-value">{{ player.email }}</span>
+        <span class="detail-value"><input type="text" v-model="player.email"/></span>
       </div>
 
       <div class="detail-item">
         <span class="detail-label">Year:</span>
-        <span class="detail-value">{{ player.year }}</span>
+        <span class="detail-value"><input type="text" v-model="player.year"/></span>
       </div>
 
       <div class="detail-item">
         <span class="detail-label">DOB:</span>
-        <span class="detail-value">{{ player.date_of_birth }}</span>
-      </div>
-
-      <div class="detail-item">
-        <span class="detail-label">Team Website:</span>
-        <a :href="player.teamWebsite" class="detail-link">{{ player.teamWebsite }}</a>
-      </div>
-      <div class="detail-item">
-        <span class="detail-label">Coach Email:</span>
-        <span class="detail-value">{{ player.coachEmail }}</span>
+        <span class="detail-value"><input type="text" v-model="player.date_of_birth"/></span>
       </div>
     </div>
-
-    <!-- Tabs Section -->
-    <div class="tabs-section">
-      <div class="tabs">
-        <button 
-          v-for="tab in tabs" 
-          :key="tab" 
-          @click="activeTab = tab"
-          :class="{ 'active': activeTab === tab }"
-        >
-          {{ tab }}
-        </button>
-      </div>
-
-      <div class="tab-content">
-      <!-- Notes Tab -->
-      <div v-if="activeTab === 'Notes'" class="notes-tab">
-    <table class="notes-table">
-      <thead>
-        <tr>
-          <th class="note-col">Note</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="note in notes">
-          <td>{{note.content}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-        <!-- Videos Tab -->
-        <div v-if="activeTab === 'Videos'" class="videos-tab">
-          <div class="video-placeholder">
-            <p>🎥 Player videos will be displayed here</p>
-          </div>
-        </div>
-
-        <!-- Stats Tab -->
-        <div v-if="activeTab === 'Stats'" class="stats-tab">
-          <div class="stats-placeholder">
-            <p>📈 Season statistics will be displayed here</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <button v-if="player.first_name && player.last_name" @click="savePlayer(player)">Save</button>
   </div>
 </template>
 
@@ -113,52 +60,62 @@ export default {
   data() {
     return {
       player: {
-        id: this.$route.params.id,
+        id: this.$route.params.id,        
         first_name: "Player",
         last_name: this.$route.params.id,
         rank: "99",
-        number: 99,
+        number:  this.$route.params.id,
         phone: "(555) 555-5555",
         position: "Forward",
         email: "player@clarkson.edu",
         year: "2026",
-        date_of_birth: "06/07/2004",
-        teamWebsite: "https://clarksonathletics.com/sports",
-        coachEmail: "coach@clarkson.edu",
+        date_of_birth: "06/07/2004"
       },
-      notes: [
-        {
-          content: 'Showed excellent puck control during practice. Potential starter material.',
-        },
-        {
-          content: 'Needs to work on backchecking. Discussed strategies for improving defensive awareness.'
-        },
-        {
-          content: 'Impressive performance in the last game with 3 assists. Leadership qualities emerging.'
-        }
-      ],
-      tabs: ['Notes', 'Videos', 'Stats'],
-      activeTab: 'Notes'
     };
   },
   created() {
     // fetch on init
-    this.fetchPlayer(this.$route.params.id);
-    this.fetchPlayerNotes(this.$route.params.id);
+    if (this.$route.params.id > 0) this.fetchPlayer(this.$route.params.id);
+    else this.player = {
+        id: 0,        
+        first_name: "",
+        last_name: "",
+        rank: "",
+        number:  "",
+        phone: "",
+        position: "",
+        email: "",
+        year: "",
+        date_of_birth: ""
+      }
   },
+  
   methods: {
     async fetchPlayer(id) {
       const url = 'http://localhost/api/get/player?id='+id;
       const response = await (await fetch(url)).json();
-      console.log('Player response', response);
+      console.log('Request succeeded with JSON response', response);
       this.player = response.data;
     },
-    async fetchPlayerNotes(id) {
-      const url = 'http://localhost/api/search/note?player='+id;
-      const response = await (await fetch(url)).json();
-      console.log('Notes response', response);
-      this.notes = response.data;
-    },
+    async savePlayer(player){
+      const body = JSON.stringify(player);
+      console.log(body);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body
+      };
+      var mode = "create";
+      if (player.id) mode = "update"; 
+      const response = await fetch("http://localhost/api/"+mode+"/player", requestOptions);
+      const data = await response.json();
+      if (data.data.id) {
+        console.log("Player saved id", data.data.id);   
+      } else {
+        alert("Error saving player");
+      }
+    }
+
   }
 
 };
