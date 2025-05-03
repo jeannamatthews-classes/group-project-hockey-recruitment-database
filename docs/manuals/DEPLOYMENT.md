@@ -6,13 +6,12 @@ For easy deployment, the Hockey DB server runs on docker. This guide expects som
 - At least 4 CPU cores
 - At least 8GB RAM
 - A network connection
-- If you plan on storing videos, *at least* 128GB of storage space
 ### Deployment Environment
 The Hockey DB server is a web service, which means that any clients who wish to use it will need to be able to access it over the network. We would **strongly reccomend** a static IP address and a DNS name for the server. Additionaly, since this program is not intended to be generally accessible to the public, we would reccomend placing it on your intranet behind a VPN.
 ### Security
-By default, the Hockey DB server uses **insecure** HTTP on port 80 and does not provide any access control mechanisms. If you are comfortable doing so, you can edit the nginx configuration to support HTTPS with an SSL certificate, or you could place it behind your own reverse proxy which provides this functionality. Additionaly, we reccomend applying access control at the reverse proxy. Many plugins exist for nginx and other reverse proxies to connect into different directory systems such as LDAP and OpenID. You should not rely on obscurity to secure your server instance. If your server is left with no access control, someone **will** find it and it **will** be exploited.
+No part of the Hockey DB server should be considered secure in it's default configuration. It is ultimatley up to the installer to ensure that proper security considerations are taken to protect the server. We would **strongly** reccomend against exposing the server to the open internet. By default, the Hockey DB server uses **insecure** HTTP on port 80 and does not provide any access control mechanisms. If you are comfortable doing so, you can edit the nginx configuration to support HTTPS with an SSL certificate, or you could place it behind your own reverse proxy which provides this functionality. Additionaly, we reccomend applying access control at the reverse proxy. Many plugins exist for nginx and other reverse proxies to connect into different directory systems such as LDAP and OpenID. For added protection, the Hockey DB server should be deployed behind a VPN or on a secure intranet. You should not rely on obscurity to secure your server instance. If your server is left with no access control, someone **will** find it and it **will** be exploited.
 
-## Instalation
+## Installation
 Once you've completed the prerequisite steps above, you can begin the installation process for the Hockey DB server.
 ### Install Docker
 Install docker engine from their guide at https://docs.docker.com/engine/install/. The installation process for every linux distribution is slightly different, so it will not be covered here. In general, you should install docker directly from docker instead of your distribution's sources, as they are often outdated.
