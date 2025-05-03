@@ -4,6 +4,8 @@ This is a short description of the varios features of this project intended for 
 
 # Known Issues
 - Dates must be entered in YYYY-MM-DD format, or an error will occur.
+- Many common errors don't display error messages.
+- Player videos and statistics are not currently implemented.
 
 # Installing the Website for Offline Use
 This project is a progressive web app, which means it is a website that can be downloaded for offline use. When visiting the website, there should be some sort of indication to install the website as an application. Note not all browsers on all platforms support this feature.

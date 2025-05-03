@@ -13,7 +13,7 @@ class Player(CRUDModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     grad_year = models.SmallIntegerField(null=True)
-    date_of_birth = models.DateField(null=True)
+    date_of_birth = models.DateField(null=True,blank=True)
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=15,null=True) # As per ITU-T reccomendation E.164 (from wikipedia)
     position = models.CharField(max_length=100,null=True)

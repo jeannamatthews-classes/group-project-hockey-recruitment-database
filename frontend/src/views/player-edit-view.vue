@@ -82,11 +82,11 @@ export default {
         last_name: "",
         rank: null,
         number:  0,
-        phone: "",
-        position: "",
-        email: "",
-        year: "",
-        date_of_birth: ""
+        phone: null,
+        position: null,
+        email: null,
+        year: null,
+        date_of_birth: null
       }
   },
   
