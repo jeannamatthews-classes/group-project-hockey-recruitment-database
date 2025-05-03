@@ -25,8 +25,8 @@
         <ul>
           <li v-for="player in getPlayers(selectedTeam1)" :key="player.name">
             <div>
-              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
-              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
+              <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name + ' ' + player.last_name }}</strong>
+              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad_year }}
             </div>
             <div>
               <label for="notes">Notes:</label>
@@ -35,7 +35,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button  v-if="player.notes.length > 3" @click="saveNote(player)">Save</button>
+              <button @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -44,10 +44,10 @@
       <div class="team">
         <h3 style="margin-bottom: 30px">{{ selectedTeam2 }}</h3>
         <ul>
-          <li v-for="player in getPlayers(selectedTeam2)" :key="player.name">
+          <li v-for="player in getPlayers(selectedTeam2)" :key="player.id">
             <div>
-              <strong><span style="color: #ffcd00">#{{ player.number }}</span>&nbsp; {{ player.name }}</strong>
-              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad }}
+              <strong><span style="color: #ffcd00">#{{ player.number_on_team }}</span>&nbsp; {{ player.first_name + ' ' + player.last_name  }}</strong>
+              <br>Position: {{ player.position }} <br> Graduation Year: {{ player.grad_year }}
             </div>
             <div>
               <label for="notes">Notes:</label>
@@ -56,7 +56,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button v-if="player.notes.length > 3" @click="saveNote(player)">Save</button>
+              <button @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -74,29 +74,29 @@ export default {
         {
           name: 'Team A',
           players: [
-            { name: 'Player 1', number: 5, position: 'Forward', grad: 2025, notes: '' },
-            { name: 'Player 2', number: 28, position: 'Defense', grad: 2026, notes: '' },
+            { id: 1, first_name: 'Player 1', last_name: '', number_on_team: 5, position: 'Forward', grad_year: 2025},
+            { id: 2, first_name: 'Player 2', last_name: '', number_on_team: 28, position: 'Defense', grad_year: 2026},
           ],
         },
         {
           name: 'Team B',
           players: [
-            { name: 'Player 3', number: 82, position: 'Goalie', grad: 2027, notes: ''},
-            { name: 'Player 4', number: 99, position: 'Forward', grad: 2025, notes: ''},
+            { id: 3, first_name: 'Player 3', last_name: '', number_on_team: 82, position: 'Goalie', grad_year: 2027},
+            { id: 4, first_name: 'Player 4', last_name: '', number_on_team: 99, position: 'Forward', grad_year: 2025},
           ],
         },
         {
           name: 'Team C',
           players: [
-            { name: 'Player 5', number: 13, position: 'Defense', grad: 2027, notes: '' },
-            { name: 'Player 6', number: 15, position: 'Forward', grad: 2026, notes: '' },
+            { id: 5, first_name: 'Player 5', last_name: '', number_on_team: 13, position: 'Defense', grad_year: 2027},
+            { id: 6, first_name: 'Player 6', last_name: '', number_on_team: 15, position: 'Forward', grad_year: 2026},
           ],
         },
         {
           name: 'Team D',
           players: [
-            { name: 'Player 7', number: 11, position: 'Forward', grad: 2025, notes: '' },
-            { name: 'Player 8', number: 6, position: 'Goalie', grad: 2028, notes: ''},
+            { id: 7, first_name: 'Player 7', last_name: '', number_on_team: 11, position: 'Forward', grad_year: 2025},
+            { id: 8, first_name: 'Player 8', last_name: '', number_on_team: 6, position: 'Goalie', grad_year: 2028},
           ],
         },
       ],
@@ -113,7 +113,16 @@ export default {
   methods: {
     getPlayers(teamName) {
       const team = this.teams.find((team) => team.name === teamName);
-      return team ? team.players : [];
+      var players = [];
+      //Add notes field
+      if (team.players){
+        team.players.forEach((p)=>{
+          players.push({id: p.id, first_name: p.first_name, last_name: p.last_name, number_on_team: p.number_on_team, position: p.position, grad_year: p.grad_year, notes: '' });
+        });
+        console.log(players);
+        return players;
+      } 
+      return [];
     },
 
     async fetchTeams() {
@@ -124,6 +133,7 @@ export default {
     },
 
     async saveNote(player){
+      if (!player.notes) return;
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -131,8 +141,8 @@ export default {
       };
       const response = await fetch("http://localhost/api/create/note", requestOptions);
       const data = await response.json();
-      if (data.id.id) {
-        console.log("Note saved id", data.id.id);   
+      if (data.data.id) {
+        console.log("Note saved id", data.data.id);   
         //clear form
         player.notes = '';
       } else {
