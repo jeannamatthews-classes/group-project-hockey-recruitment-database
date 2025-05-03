@@ -31,6 +31,9 @@
           placeholder="Search by Grad. Year"
           class="filter-input"
         />
+        &nbsp;
+        <button><router-link to="/player-edit/0">Add Player</router-link></button>
+
     </div>
 
     <div class="player-list" v-if="players.length">
@@ -39,7 +42,7 @@
         :key="player.name"
         class="player-card"
       >
-      <!-- <router-link router-link to="/player-info">Players</router-link> -->
+        <router-link :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link>
         <h3><span style="color: #ffcd00">#{{ player.number }} </span> &nbsp {{ player.name }}</h3>
         <div class="player-divider"></div>
         <p>Team: {{ player.team }}</p>
@@ -52,7 +55,7 @@
               class="notes-textarea"
               placeholder="Add notes here..."
           ></textarea>
-          <button @click="saveNote(player)">Save</button>
+          <button v-if="player.notes.length > 3" @click="saveNote(player)">Save</button>
         </div>
       </div>
     </div>
@@ -64,8 +67,17 @@ export default {
   name: 'PlayerView',
   data() {
     return {
-      players: [],
-      teams: [],
+      players: [
+        { id: 1, name: 'Player 1', team: 'Team A', number: 5, position: 'Forward', grad: 2025, notes: ''  },
+        { id: 2,  name: 'Player 2', team: 'Team A', number: 28, position: 'Defense', grad: 2026, notes: '' },
+        { id: 3,  name: 'Player 3', team: 'Team B', number: 82, position: 'Goalie', grad: 2027, notes: '' },
+        { id: 4,  name: 'Player 4', team: 'Team B', number: 99, position: 'Forward', grad: 2025, notes: '' },
+        { id: 5,  name: 'Player 5', team: 'Team C', number: 13, position: 'Defense', grad: 2027, notes: '' },
+        { id: 6,  name: 'Player 6', team: 'Team C', number: 15, position: 'Forward', grad: 2026, notes: '' },
+        { id: 7,  name: 'Player 7', team: 'Team D', number: 11, position: 'Forward', grad: 2025, notes: '' },
+        { id: 8,  name: 'Player 8', team: 'Team D', number: 6, position: 'Goalie', grad: 2028, notes: '' },
+      ],
+      teams: ['Team A', 'Team B', 'Team C', 'Team D'],
       positions: ['Forward', 'Defense', 'Goalie'],
       filters: {
         name: '',
@@ -123,8 +135,8 @@ export default {
       };
       const response = await fetch("http://localhost/api/create/note", requestOptions);
       const data = await response.json();
-      if (data.id.id) {
-        console.log("Note saved id", data.id.id);   
+      if (data.data.id) {
+        console.log("Note saved id", data.data.id);   
         //clear form
         player.notes = '';
       } else {
