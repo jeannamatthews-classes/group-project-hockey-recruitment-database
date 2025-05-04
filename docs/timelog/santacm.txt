@@ -97,5 +97,5 @@ DATE        TIME            TASKS
 5/2         120 minutes     Added fetching and saving notes functionality on games-view, while fixing players-view filtering and adding saving notes functionality there as well. The API call
                             for creating notes had a bug, so I tried to debug it but turns out it was from the backend side of things. Turns out that demo_data.sql had " instead of ' so I
                             fixed that. Within this time debugging was included.
-
+5/3         15 hours        Wasn't able to write much, but hopefully you can see the commit history as proof of everything I did. I'm so sorry for making so many last minute changes.
 
