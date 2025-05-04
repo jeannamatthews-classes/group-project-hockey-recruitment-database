@@ -52,6 +52,59 @@
     </div>
     <button v-if="player.first_name && player.last_name" @click="savePlayer(player)">Save</button>
   </div>
+
+    <!-- Current Teams Section -->
+    <h3 v-if="memberships.length">Current Teams</h3>
+    <div class="details-grid" v-for="m in memberships" :key="m.team_id">
+      <div class="detail-item">
+        <span class="detail-label">Team:</span>
+        <span class="detail-value">{{ m.team.name }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Number:</span>
+        <span class="detail-value">
+          <input
+            type="number"
+            v-model.number="m.number_on_team"
+            min="1"
+            max="99"
+          />
+        </span>
+        <button @click="saveTeamPlayer(m.team_id, { id: player.id, number_on_team: m.number_on_team })">Save</button>
+        <button @click="removeTeamPlayer(m.team_id, { id: player.id })">Remove</button>
+      </div>
+    </div>
+
+    <!-- Add to Team Section -->
+    <div v-if="teams.length">
+      <h3>Add to Team</h3>
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-label">Team:</span>
+          <span class="detail-value">
+            <select v-model="newMembership.team_id">
+              <option :value="0">Select Team</option>
+              <option v-for="t in teams" :key="t.id" :value="t.id">{{ t.name }}</option>
+            </select>
+          </span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Number:</span>
+          <span class="detail-value">
+            <input
+              type="number"
+              v-model.number="newMembership.number_on_team"
+              placeholder="1-99"
+              min="1"
+              max="99"
+            />
+          </span>
+          <button :disabled="!addFormValid" @click="addTeamPlayer(newMembership.team_id, { id: player.id, number_on_team: newMembership.number_on_team })">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -71,11 +124,27 @@ export default {
         year: 2026,
         date_of_birth: "2004-06-07"
       },
+      teams: [],
+      memberships: [],
+      newMembership: {
+        team_id: 0,
+        number_on_team: null
+      }
     };
+  },
+  computed: {
+    addFormValid() {
+      const num = this.newMembership.number_on_team;
+      return this.newMembership.team_id > 0 && Number.isInteger(num) && num >= 1 && num <= 99;
+    }
   },
   created() {
     // fetch on init
-    if (this.$route.params.id > 0) this.fetchPlayer(this.$route.params.id);
+    if (this.player.id > 0) {
+      this.fetchPlayer(this.player.id);
+      this.fetchTeams();
+      this.fetchMemberships(this.player.id);
+    }
     else this.player = {
         id: 0,        
         first_name: "",
@@ -96,6 +165,40 @@ export default {
       const response = await (await fetch(url)).json();
       console.log('Request succeeded with JSON response', response);
       this.player = response.data;
+    },
+    async fetchTeams() {
+      const resp = await (await fetch('http://localhost/api/search/team?all')).json();
+      this.teams = resp.data;
+    },
+    async fetchMemberships(playerId) {
+      const resp = await (await fetch(`http://localhost/api/search/team_membership?player_id=${playerId}`)).json();
+      this.memberships = resp.data;
+    },
+    async saveTeamPlayer(team_id, player) {
+      if (!player.id || !player.number_on_team) return;
+      const body = JSON.stringify({ team_id, player_id: player.id, number_on_team: player.number_on_team });
+      const opts = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body };
+      const resp = await (await fetch('http://localhost/api/update/team_membership', opts)).json();
+      if (resp.data && resp.data.id) this.fetchMemberships(this.player.id);
+      else alert('Error saving membership');
+    },
+    async removeTeamPlayer(team_id, player) {
+      const body = JSON.stringify({ team_id, player_id: player.id });
+      const opts = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body };
+      const resp = await (await fetch('http://localhost/api/delete/team_membership', opts)).json();
+      if (resp.success) this.fetchMemberships(this.player.id);
+      else alert('Error removing membership');
+    },
+    async addTeamPlayer(team_id, player) {
+      if (!player.id || !player.number_on_team) return;
+      const body = JSON.stringify({ team_id, player_id: player.id, number_on_team: player.number_on_team });
+      const opts = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body };
+      const resp = await (await fetch('http://localhost/api/create/team_membership', opts)).json();
+      if (resp.data && resp.data.id) {
+        this.newMembership.team_id = 0;
+        this.newMembership.number_on_team = null;
+        this.fetchMemberships(this.player.id);
+      } else alert('Error adding membership');
     },
     async savePlayer(player){
       this.player.rank = Number(this.player.rank) // no clue if this is a good way to do this but rank needs to be a number

@@ -38,28 +38,6 @@
     </div>
   </div>
 
-  <div v-if="team.id">
-  <h3>Add Player</h3>
-  <div class="details-grid">
-    <div class="detail-item">
-      <span class="detail-label">Name:</span>
-      <span class="detail-value">
-        <select v-model="addPlayer.id" class="filter-select">
-        <option value="0" >Select Player</option>
-        <option v-for="p in players" :key="p.id" :value="p.id">
-          {{ p.first_name + ' ' + p.last_name }}
-        </option>
-      </select>
-      </span>
-    </div>
-    <div class="detail-item">
-      <span class="detail-label">Number:</span>
-      <span class="detail-value"><input type="number" v-model="addPlayer.number_on_team" placeholder=""/></span>
-      <button @click="addTeamPlayer(team.id, addPlayer)">Add</button>  
-    </div>
-  </div>
-</div>
-
 </template>
 
 <script>
@@ -87,14 +65,12 @@ export default {
         { id: 1, first_name: 'Player 1', last_name: '', number_on_team: 5, position: 'Forward', grad_year: 2025},
         { id: 2, first_name: 'Player 2', last_name: '', number_on_team: 28, position: 'Defense', grad_year: 2026},
       ],
-      addPlayer: { id: 0, number_on_team: ''},
     }
   },
 
   created() {
     // fetch on init
     this.fetchTeams();
-    this.fetchPlayers();
   },
 
   methods:{
@@ -109,14 +85,6 @@ export default {
       console.log('Teams response', response);
       this.teams = response.data;
     },
-
-    async fetchPlayers() {
-      const url = 'http://localhost/api/search/player?all';
-      const response = await (await fetch(url)).json();
-      console.log('Players response', response);
-      this.players = response.data;
-    },
-
     async saveTeamPlayer(team_id, player){
       if (!player.id || !player.number_on_team) return;
       const body = JSON.stringify({team_id: team_id, player_id: player.id, number_on_team: player.number_on_team});
@@ -151,24 +119,6 @@ export default {
         alert("Error deleting team membership");
       }
     },
-
-    async addTeamPlayer(team_id, player){
-      if (!player.id || !player.number_on_team) return;
-      const body = JSON.stringify({team_id: team_id, player_id: player.id, number_on_team: player.number_on_team});
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: body
-      };
-      const response = await fetch("http://localhost/api/create/team_membership", requestOptions);
-      const data = await response.json();      
-      if (data.data.id) {
-        console.log("Team Membership added id", data.data.id);   
-        this.fetchTeams(); //refresh list
-      } else {
-        alert("Error adding team membership");
-      }
-    }
   }
 };
 </script>
