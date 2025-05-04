@@ -41,3 +41,18 @@ TIMELOG:
 04/21/2025, 30min, playing around in player-view, trying to fetch data
 04/21/2035, 30min, discuss with team
 04/21/2025, 30min, debug
+04/21/2025, 240min, working on fetching data from backend and creating something demo-able for presentation
+04/22/2025, 45min, meet with team, discuss presentation
+04/22/2025, 10min, demo and presentation
+04/24/2025, 30min, discuss plan and bugs with team
+04/24/2025, 45min, work on implementation and bugs with fetching data from backend
+04/26/2025, 45min, work on backend frontend integration. stuck. 
+04/01/2025, 60min, starting over. make dev is broken. some debugging to get the containers and development environment up and running. 
+04/03/2025, 15min, reach out to hockey coach to remind him to watch the presentation/submit feedback
+04/03/2025, 45min, update ER diagram/relational schema section of design document
+04/03/2025, 45min, trying to help debug and implement fetching data. not very helpful. 
+04/03/2025, 30min, updating UI part of design doc.
+
+** Note: On the commit section of the repository, it looks like I haven't written many lines of code because I have little commits to main. This is because I wrote the majority of my contributions in a separate branch (restructure), whose changes were manually switched over to main by another team member. 
+
+
