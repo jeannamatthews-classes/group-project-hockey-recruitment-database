@@ -144,21 +144,21 @@ export default {
       this.fetchPlayer(this.player.id);
       this.fetchTeams();
       this.fetchMemberships(this.player.id);
-    }
-    else this.player = {
-        id: 0,        
+    } else {
+      this.player = {
+        id: 0,
         first_name: "",
         last_name: "",
         rank: undefined,
-        number:  undefined,
+        number: undefined,
         phone: undefined,
         position: undefined,
         email: undefined,
         year: undefined,
         date_of_birth: undefined
-      }
+      };
+    }
   },
-  
   methods: {
     async fetchPlayer(id) {
       const url = 'http://localhost/api/get/player?id='+id;
