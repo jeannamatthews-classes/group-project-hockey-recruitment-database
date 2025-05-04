@@ -52,7 +52,9 @@ TIMELOG:
 04/03/2025, 45min, update ER diagram/relational schema section of design document
 04/03/2025, 45min, trying to help debug and implement fetching data. not very helpful. 
 04/03/2025, 30min, updating UI part of design doc.
+04/03/2025, 30min, debugging console errors with database corruption/migration (to get more UI pictures for design doc)
+04/03/2025, 15min, finish updating design doc. 
 
-** Note: On the commit section of the repository, it looks like I haven't written many lines of code because I have little commits to main. This is because I wrote the majority of my contributions in a separate branch (restructure), whose changes were manually switched over to main by another team member. 
+** Note: On the commit section of the repository, it looks like I haven't written many lines of code because I have few commits to main. This is because I wrote the majority of my contributions in a separate branch (restructure), whose changes were manually switched over to main by someone else when we were beginning to integrate the backend and frontend. So just to clarify, I added the vue app and base html pages with example data that came from the restructure branch. 
 
 

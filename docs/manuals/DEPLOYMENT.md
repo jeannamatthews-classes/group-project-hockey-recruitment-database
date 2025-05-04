@@ -1,6 +1,11 @@
 # Hockey DB Deployment Guide
 ## Before You Begin
 For easy deployment, the Hockey DB server runs on docker. This guide expects some familiarity with servers and networking, and is targeted towards an entry to mid-level systems administrator. The exact steps for the following items will differ between IT environments, so they will be left to the discression of the installer.
+### Known Bugs
+- Dates must be entered in YYYY-MM-DD format, or an error will occur.
+- Many common errors don't display error messages.
+- Player videos and statistics are not currently implemented.
+- The frontend assumes that the server is run on localhost (not true in a production environment).
 ### Hardware Requirements
 - A linux server, either a VM or bare metal
 - At least 4 CPU cores
