@@ -22,7 +22,6 @@
       <span class="detail-value"><input type="text" v-model="team.coach_first_name" placeholder="First"/><input type="text" v-model="team.coach_last_name" placeholder="Last"/></span>
     </div>
   </div>
-  <!-- <button v-if="team.name.length > 3" @click="saveTeam(team)">Save</button>          -->
   <button :disabled="!team.name || !team.name.trim().length" @click="saveTeam(team)">Save</button>     
 
   <h3 v-if="team.players">Players</h3>
@@ -85,6 +84,26 @@ export default {
       const response = await (await fetch(url)).json();
       console.log('Teams response', response);
       this.teams = response.data;
+    },
+    async saveTeam(team) {
+      const body = JSON.stringify(team);
+      console.log(body);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body
+      };
+      var mode = "create";
+      if (team.id) mode = "update"; 
+      const response = await fetch("http://localhost/api/"+mode+"/team", requestOptions);
+      const data = await response.json();      
+      if (data.data.id) {
+        console.log("Team saved id", data.data.id);   
+        this.fetchTeams(); //refresh listbox
+        this.selectedTeamId = data.data.id;
+      } else {
+        alert("Error saving team");
+      }
     },
     async saveTeamPlayer(team_id, player){
       if (!player.id || !player.number_on_team) return;
