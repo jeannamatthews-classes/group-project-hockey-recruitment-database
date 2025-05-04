@@ -43,6 +43,7 @@ class Player(CRUDModel):
                     logger.error(f"Team with ID {team.team_id} not found for player {player_id}.")
                     continue
                 team_data["number_on_team"] = team.number_on_team
+                team_data["last_updated"] = team.last_updated
                 player["teams"].append(team_data)
     
             return JsonResponse({"status": "success", "data": player},status=200)
@@ -84,6 +85,7 @@ class Player(CRUDModel):
                     logger.error(f"Team with ID {team.team_id} not found for player {player['id']}.")
                     continue
                 team_data["number_on_team"] = team.number_on_team
+                team_data["last_updated"] = team.last_updated
                 player["teams"].append(team_data)
 
             objects.append(player)
@@ -196,6 +198,7 @@ class Team(CRUDModel):
                     logger.error(f"Player with ID {player.player_id} not found for team {team_id}.")
                     continue
                 player_data["number_on_team"] = player.number_on_team
+                player_data["last_updated"] = player.last_updated
                 team["players"].append(player_data)
     
             return JsonResponse({"status": "success", "data": team},status=200)
@@ -236,6 +239,7 @@ class Team(CRUDModel):
                     logger.error(f"Player with ID {player.player_id} not found for team {team['id']}.")
                     continue
                 player_data["number_on_team"] = player.number_on_team
+                player_data["last_updated"] = player.last_updated
                 team["players"].append(player_data)
 
             objects.append(team)
@@ -247,6 +251,7 @@ class TeamMembership(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     number_on_team = models.IntegerField()
+    last_updated = models.DateField(auto_now=True)
 
 
 class Game(models.Model):
