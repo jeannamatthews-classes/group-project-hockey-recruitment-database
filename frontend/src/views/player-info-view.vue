@@ -1,6 +1,6 @@
 <template>
   <div class="player-info-view">
-    <router-link :to="{ name: 'player-edit', params: { id: player.id } }">Player Edit</router-link>
+    <router-link class="btn" :to="{ name: 'player-edit', params: { id: player.id } }">Player Edit</router-link>
     <!-- Photo Section -->
     <div class="photo-section">
       <img 
@@ -165,11 +165,38 @@ export default {
       this.notes = response.data;
     },
   }
-
 };
 </script>
 
 <style scoped>
+/* universal button */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #ffcd00;
+  color: #004e42;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background-color: #ffd633;
+  transform: translateY(-1px);
+}
+
+.tabs button.active {
+  background-color: #ffcd00;
+  color: #004e42;
+}
+
+.player-info-view .btn {
+  margin-bottom: 20px;
+}
+
 .player-info-view {
   padding: 30px;
   max-width: 1000px;

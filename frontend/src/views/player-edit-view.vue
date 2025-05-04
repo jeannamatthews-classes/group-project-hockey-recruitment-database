@@ -1,6 +1,6 @@
 <template>
   <div class="player-info-view">
-    <router-link v-if="player.id > 0" :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link>
+    <router-link class="btn" v-if="player.id > 0" :to="{ name: 'player-info', params: { id: player.id } }">Player Info</router-link>
 
     <!-- Photo Section -->
     <div class="photo-section">
@@ -50,7 +50,7 @@
         <span class="detail-value"><input type="text" v-model="player.date_of_birth"/></span>
       </div>
     </div>
-    <button v-if="player.first_name && player.last_name" @click="savePlayer(player)">Save</button>
+    <button class="btn" v-if="player.first_name && player.last_name" @click="savePlayer(player)">Save</button>
   </div>
 
     <!-- Current Teams Section -->
@@ -70,8 +70,8 @@
             max="99"
           />
         </span>
-        <button @click="saveTeamPlayer(m.team_id, { id: player.id, number_on_team: m.number_on_team })">Save</button>
-        <button @click="removeTeamPlayer(m.team_id, { id: player.id })">Remove</button>
+        <button class="btn-outline" @click="saveTeamPlayer(m.team_id, { id: player.id, number_on_team: m.number_on_team })">Save</button>
+        <button class="btn-outline" @click="removeTeamPlayer(m.team_id, { id: player.id })">Remove</button>
       </div>
     </div>
 
@@ -99,7 +99,7 @@
               max="99"
             />
           </span>
-          <button :disabled="!addFormValid" @click="addTeamPlayer(newMembership.team_id, { id: player.id, number_on_team: newMembership.number_on_team })">
+          <button class="btn" :disabled="!addFormValid" @click="addTeamPlayer(newMembership.team_id, { id: player.id, number_on_team: newMembership.number_on_team })">
             Add
           </button>
         </div>
@@ -142,9 +142,10 @@ export default {
     // fetch on init
     if (this.player.id > 0) {
       this.fetchPlayer(this.player.id);
-      this.fetchTeams();
       this.fetchMemberships(this.player.id);
+      this.fetchTeams();
     } else {
+      this.fetchTeams();
       this.player = {
         id: 0,
         first_name: "",
@@ -201,7 +202,7 @@ export default {
       } else alert('Error adding membership');
     },
     async savePlayer(player){
-      this.player.rank = Number(this.player.rank) // no clue if this is a good way to do this but rank needs to be a number
+      this.player.rank = Number(this.player.rank) 
       const body = JSON.stringify(player);
       console.log(body);
       const requestOptions = {
@@ -234,6 +235,57 @@ export default {
   border-radius: 12px;
   color: #fff;
   font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #ffcd00;
+  color: #004e42;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-bottom: 15px;
+}
+.btn:hover {
+  background-color: #ffd633;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 2px solid #ffcd00;
+  border-radius: 6px;
+  color: #ffcd00;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  margin-right: 8px;
+}
+.btn-outline:hover {
+  background-color: #ffcd00;
+  color: #004e42;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 70%;                
+  height: 2rem;               
+  padding: 0 0.5rem;          
+  margin-top: 0;             
+  background: #006d5b;
+  border: 1px solid rgba(255, 205, 0, 0.7);
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .photo-section {

@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="filters">
       <select v-model="selectedTeamId" class="filter-select" @change="selectTeam()">
         <option value="">Add Team</option>
         <option v-for="t in teams" :key="t.id" :value="t.id">
@@ -22,7 +22,7 @@
       <span class="detail-value"><input type="text" v-model="team.coach_first_name" placeholder="First"/><input type="text" v-model="team.coach_last_name" placeholder="Last"/></span>
     </div>
   </div>
-  <button :disabled="!team.name || !team.name.trim().length" @click="saveTeam(team)">Save</button>     
+  <button class="btn" :disabled="!team.name || !team.name.trim().length" @click="saveTeam(team)">Save</button>     
 
   <h3 v-if="team.players">Players</h3>
   <div class="details-grid" v-for="player in team.players" :key="player.name">
@@ -33,8 +33,8 @@
     <div class="detail-item">
       <span class="detail-label">Number:</span>
       <span class="detail-value"><input type="text" v-model="player.number_on_team" placeholder=""/></span>
-      <button @click="saveTeamPlayer(team.id, player)">Save</button>  
-      <button @click="removeTeamPlayer(team.id, player)">Remove</button>  
+      <button class="btn-outline" @click="saveTeamPlayer(team.id, player)">Save</button>  
+      <button class="btn-outline" @click="removeTeamPlayer(team.id, player)">Remove</button>  
     </div>
   </div>
 
@@ -151,12 +151,37 @@ export default {
 }
 
 .filter-input,
-.filter-select {
-  padding: 5px;
+.filter-select,
+input[type="number"] {
+ padding: 0.5rem;
+  background: #006d5b;
+  border: 1px solid #ffcd00;
+  border-radius: 6px;
+  color: #fff;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: #ffcd00;
+  color: #004e42;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 15px 0;
+  border: none;
+}
+.btn-outline {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 2px solid #ffcd00;
+  border-radius: 6px;
+  color: #ffcd00;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
 .details-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
