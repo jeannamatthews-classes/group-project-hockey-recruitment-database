@@ -41,7 +41,7 @@
 
       <div class="detail-item">
         <span class="detail-label">Year:</span>
-        <span class="detail-value">{{ player.year }}</span>
+        <span class="detail-value">{{ player.grad }}</span>
       </div>
 
       <div class="detail-item">
@@ -125,7 +125,7 @@ export default {
         phone: "(555) 555-5555",
         position: "Forward",
         email: "player@clarkson.edu",
-        year: "2026",
+        grad: "2026",
         date_of_birth: "06/07/2004",
         teams: [
           {team_website: "https://clarksonathletics.com/sports", coach_email: "coach@clarkson.edu"},
