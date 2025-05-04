@@ -76,7 +76,7 @@
     </div>
 
     <!-- Add to Team Section -->
-    <div v-if="teams.length">
+    <div>
       <h3>Add to Team</h3>
       <div class="details-grid">
         <div class="detail-item">
