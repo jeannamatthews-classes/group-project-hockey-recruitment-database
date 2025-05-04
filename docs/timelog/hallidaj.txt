@@ -23,3 +23,4 @@ Date        Time    Description
 05/02/2025  1.5hr   Improve ranking implementation on backend
 05/02/2025  3hr     Bugfixing
 05/02/2025  45min   Updating API design doc
+05/02/2025  30min   Debugging frontend
