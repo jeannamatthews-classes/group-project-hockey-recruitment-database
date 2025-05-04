@@ -1,0 +1,1 @@
+We were able to produce a functional MVP. At the moment, no one has expressed interest in maintaining the project going forwards. We have created a maintenance plan suggestion, for the consideration of anyone interested in adding new features or maintaining the project going forwards.
