@@ -145,6 +145,7 @@ export default {
       this.fetchTeams();
       this.fetchMemberships(this.player.id);
     } else {
+      this.fetchTeams();
       this.player = {
         id: 0,
         first_name: "",
