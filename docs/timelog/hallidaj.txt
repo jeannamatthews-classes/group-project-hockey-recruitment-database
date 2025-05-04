@@ -22,3 +22,4 @@ Date        Time    Description
 04/24/2025  1hr     Writing deployment guide
 05/02/2025  1.5hr   Improve ranking implementation on backend
 05/02/2025  3hr     Bugfixing
+05/02/2025  45min   Updating API design doc
