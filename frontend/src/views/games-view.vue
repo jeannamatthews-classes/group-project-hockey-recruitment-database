@@ -36,7 +36,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button @click="saveNote(player)">Save</button>
+              <button :disabled="!player.notes || !player.notes.trim().length" @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>
@@ -58,7 +58,7 @@
                 class="notes-textarea"
                 placeholder="Add notes here..."
               ></textarea>
-              <button @click="saveNote(player)">Save</button>
+              <button :disabled="!player.notes || !player.notes.trim().length" @click="saveNote(player)">Save</button>
             </div>
           </li>
         </ul>

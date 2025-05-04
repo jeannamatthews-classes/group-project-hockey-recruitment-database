@@ -22,7 +22,7 @@
       <span class="detail-value"><input type="text" v-model="team.coach_first_name" placeholder="First"/><input type="text" v-model="team.coach_last_name" placeholder="Last"/></span>
     </div>
   </div>
-  <button v-if="team.name.length > 3" @click="saveTeam(team)">Save</button>    
+  <button :disabled="!player.notes || !player.notes.trim().length" @click="saveTeam(team)">Save</button>         
 
   <h3 v-if="team.players">Players</h3>
   <div class="details-grid" v-for="player in team.players" :key="player.name">
